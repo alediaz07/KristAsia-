@@ -105,39 +105,51 @@ nav a:hover{color:var(--terracotta)}
 @keyframes header-fade{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 
 .logo-transition{
-  height:260vh;
+  height:280vh;
   position:relative;
   background:var(--ivory);
   overflow:hidden;
 }
-.logo-transition-sticky{
+.logo-transition-stage{
   position:sticky;
   top:0;
+  width:100%;
   height:100svh;
   overflow:hidden;
-  display:grid;
-  place-items:center;
   isolation:isolate;
 }
-.logo-transition-sticky:before{
+.logo-transition-stage:before{
   content:"";
   position:absolute;
   inset:0;
   z-index:-1;
   background:var(--ivory);
 }
+.transition-center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:100%;
+  height:100%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
 .logo-transition-mark{
-  position:relative;
+  position:absolute;
+  left:50%;
+  top:50%;
   width:clamp(260px,35vw,520px);
   aspect-ratio:1937 / 812;
   --logo-top-split:59%;
   --logo-bottom-split:54%;
   z-index:3;
   pointer-events:none;
+  transform:translate(-50%,-50%);
 }
 .logo-transition-mark img{
   position:absolute;
-  inset:0;
+  left:50%;
+  top:50%;
   width:100%;
   height:100%;
   object-fit:contain;
@@ -150,14 +162,15 @@ nav a:hover{color:var(--terracotta)}
 .logo-half-center{clip-path:inset(0 0 65% var(--logo-top-split))}
 .logo-transition-video{
   position:absolute;
-  inset:0;
+  left:50%;
+  top:50%;
   z-index:2;
-  width:100%;
-  height:100%;
+  width:100vw;
+  height:100svh;
   object-fit:cover;
   object-position:center;
   opacity:var(--transition-video-opacity,0);
-  transform:scale(var(--transition-video-scale-x,.12),var(--transition-video-scale-y,.22));
+  transform:translate(-50%,-50%) scale(var(--transition-video-scale-x,.12),var(--transition-video-scale-y,.22));
   transform-origin:center;
   border-radius:var(--transition-video-radius,6px);
   background:var(--ivory);
@@ -322,7 +335,7 @@ footer nav{align-items:center;flex-wrap:wrap}
   .hero-aside:before{height:42px;margin-bottom:12px}
   .logo-transition{height:240vh}
   .logo-transition-mark{width:clamp(200px,62vw,280px)}
-  .logo-transition-sticky{height:100svh}
+  .logo-transition-stage{height:100svh}
   .scroll-story{height:340vh}
   .logo-reveal{min-height:68svh;padding:64px 24px}
   .video-wrap video{object-position:50% 50%}
@@ -403,14 +416,16 @@ footer nav{align-items:center;flex-wrap:wrap}
   </section>
 
   <section class="logo-transition" id="logo-transition" aria-label="Transición visual KristAsia">
-    <div class="logo-transition-sticky">
-      <div class="logo-transition-mark" aria-hidden="true">
-        <img class="logo-half-krist logo-half-left" src="kristasia-logo.png" alt="" />
-        <img class="logo-half-beauty logo-half-left" src="kristasia-logo.png" alt="" />
-        <img class="logo-half-asia logo-half-right" src="kristasia-logo.png" alt="" />
-        <img class="logo-half-center logo-half-right" src="kristasia-logo.png" alt="" />
+    <div class="logo-transition-stage">
+      <div class="transition-center">
+        <div class="logo-transition-mark" aria-hidden="true">
+          <img class="logo-half-krist logo-half-left" src="kristasia-logo.png" alt="" />
+          <img class="logo-half-beauty logo-half-left" src="kristasia-logo.png" alt="" />
+          <img class="logo-half-asia logo-half-right" src="kristasia-logo.png" alt="" />
+          <img class="logo-half-center logo-half-right" src="kristasia-logo.png" alt="" />
+        </div>
+        <video class="logo-transition-video" preload="auto" muted playsinline poster="poster.jpg" src="kristasia-scroll.mp4" aria-hidden="true"></video>
       </div>
-      <video class="logo-transition-video" preload="auto" muted playsinline poster="poster.jpg" src="kristasia-scroll.mp4" aria-hidden="true"></video>
     </div>
   </section>
 
@@ -544,7 +559,6 @@ footer nav{align-items:center;flex-wrap:wrap}
 const hero = document.querySelector('.hero');
 const header = document.querySelector('header');
 const logoTransition = document.querySelector('.logo-transition');
-const logoMark = document.querySelector('.logo-transition-mark');
 const logoLeft = [...document.querySelectorAll('.logo-half-left')];
 const logoRight = [...document.querySelectorAll('.logo-half-right')];
 const transitionVideo = document.querySelector('.logo-transition-video');
@@ -599,11 +613,11 @@ function animateLogoTransition(){
 
   logoLeft.forEach(layer => {
     layer.style.opacity = String(logoIn * (1 - logoOut));
-    layer.style.transform = `translateX(${-halfOffset}vw)`;
+    layer.style.transform = `translate(-50%,-50%) translateX(${-halfOffset}vw)`;
   });
   logoRight.forEach(layer => {
     layer.style.opacity = String(logoIn * (1 - logoOut));
-    layer.style.transform = `translateX(${halfOffset}vw)`;
+    layer.style.transform = `translate(-50%,-50%) translateX(${halfOffset}vw)`;
   });
   transitionVideo.style.setProperty('--transition-video-opacity', videoIn.toFixed(3));
   transitionVideo.style.setProperty('--transition-video-scale-x', videoScaleX.toFixed(3));
