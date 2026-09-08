@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KristAsia Beauty Center | Facial Studio &amp; Lashes en Desamparados</title>
+<meta name="description" content="Beauty Center KristAsia en San Miguel de Desamparados. Facial Studio, lashes, tratamientos de belleza y experiencias de bienestar." />
+<meta property="og:title" content="KristAsia Beauty Center | Facial Studio &amp; Lashes" />
+<meta property="og:description" content="Relájate, renueva, brilla en San Miguel, Desamparados." />
+<meta property="og:image" content="kristasia-logo.png" />
+<meta property="og:type" content="website" />
+<style>
+:root{
+  --ivory:#f6f0e6;
+  --ink:#2a2926;
+  --olive:#7f8261;
+  --terracotta:#b8755c;
+  --gold:#c2a16a;
+  --white:#fffaf2;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  background:var(--ivory);
+  color:var(--ink);
+}
+a{text-decoration:none;color:inherit}
+:focus-visible{outline:2px solid var(--terracotta);outline-offset:4px}
+header{
+  position:fixed; inset:0 0 auto 0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px clamp(18px,4vw,64px);
+  background:linear-gradient(to bottom,rgba(246,240,230,.96),rgba(246,240,230,.7),transparent);
+  backdrop-filter:blur(8px);
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.08em}
+.brand img{width:auto;height:auto;max-height:34px;display:block}
+nav{display:flex;gap:22px;font-size:13px;letter-spacing:.04em}
+nav a{transition:color .2s ease}
+nav a:hover{color:var(--terracotta)}
+.menu-toggle{display:none;background:transparent;border:0;color:var(--ink);font:inherit;font-size:24px;line-height:1;padding:6px;cursor:pointer}
+.mobile-nav{display:none}
+.cta{
+  border:1px solid var(--ink); border-radius:999px;
+  padding:11px 18px; font-weight:600;
+}
+.hero{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:120px 24px 56px;
+}
+.hero-inner{max-width:980px}
+.kicker{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--olive);font-weight:700}
+.hero h1{
+  font-family:Georgia, "Times New Roman", serif;
+  font-weight:500;
+  font-size:clamp(58px,9vw,132px);
+  line-height:.92;
+  margin:18px 0 26px;
+}
+.hero p{font-size:clamp(18px,2vw,26px);max-width:720px;margin:0 auto 34px;line-height:1.45}
+.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:999px;padding:14px 22px;font-weight:700
+}
+.btn-primary{background:var(--ink);color:var(--white)}
+.btn-secondary{border:1px solid rgba(42,41,38,.25)}
+.scroll-note{margin-top:52px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.65}
+
+.scroll-story{
+  height:400vh;
+  position:relative;
+  background:#111;
+}
+.sticky{
+  position:sticky; top:0; height:100svh; overflow:hidden;
+}
+.video-wrap{position:absolute;inset:0;background:#000}
+.video-wrap video{
+  width:100%; height:100%; object-fit:cover; object-position:center;
+  display:block;
+}
+.video-wrap::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.38),transparent 34%,transparent 66%,rgba(0,0,0,.15)),
+    linear-gradient(to top,rgba(0,0,0,.24),transparent 35%);
+  pointer-events:none;
+}
+.story-copy{
+  position:absolute;inset:0;pointer-events:none;
+}
+.story-step{
+  position:absolute;
+  max-width:min(520px,72vw);
+  color:#fff;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .18s linear, transform .18s linear;
+  text-shadow:0 2px 24px rgba(0,0,0,.35);
+}
+.story-step.active{opacity:1;transform:translateY(0)}
+.story-step h2{
+  font-family:Georgia, "Times New Roman", serif;
+  font-size:clamp(42px,6vw,90px);
+  line-height:.96;
+  font-weight:500;
+  margin:0 0 12px;
+}
+.story-step p{margin:0;font-size:clamp(14px,1.4vw,20px);letter-spacing:.03em}
+.s1{left:7vw;top:24vh}
+.s2{right:7vw;top:26vh;text-align:right}
+.s3{left:7vw;bottom:18vh}
+.words{
+  position:absolute;right:7vw;bottom:14vh;
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end;
+}
+.words span{
+  color:#fff;border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;padding:10px 14px;
+  opacity:0;transform:translateY(10px);transition:.2s ease;
+}
+.words span.active{opacity:1;transform:none}
+
+.logo-reveal{
+  min-height:92svh;
+  display:grid;
+  place-items:center;
+  padding:80px 24px;
+  text-align:center;
+}
+.logo-reveal img{max-width:min(680px,86vw);width:auto;height:auto;display:block;margin:0 auto}
+.logo-reveal h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(44px,6vw,84px);line-height:1;margin:56px 0 20px}
+.logo-reveal p{max-width:650px;margin:0 auto;font-size:18px;line-height:1.6;color:#59564f}
+
+.section{
+  padding:110px clamp(20px,6vw,96px);
+}
+.section h2{
+  font-family:Georgia, "Times New Roman", serif;
+  font-size:clamp(46px,7vw,96px);
+  font-weight:500;line-height:1;margin:0 0 28px;
+}
+.section .lead{font-size:clamp(18px,2vw,26px);max-width:760px;line-height:1.5}
+.services{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px;
+}
+.card{
+  min-height:440px;border-radius:4px;padding:30px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  background:linear-gradient(145deg,var(--white),#ebe1d2);
+  border:1px solid rgba(42,41,38,.08)
+}
+.card:nth-child(2){background:linear-gradient(145deg,#d9d7c2,#f5f0e7)}
+.card:nth-child(3){background:linear-gradient(145deg,#d8b09e,#f3e7df)}
+.card .num{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.65;margin-bottom:auto}
+.card h3{font-family:Georgia,serif;font-size:38px;margin:0 0 10px;font-weight:500}
+.card p{margin:0;line-height:1.5}
+.card ul{margin:16px 0 0;padding:0;list-style:none;line-height:1.8;font-size:14px}
+.card li:before{content:"/";color:var(--terracotta);margin-right:8px}
+.media-section{padding:100px clamp(20px,8vw,128px);overflow:hidden}
+.media-section.alt{background:#ebe5d9}
+.media-intro{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:44px}
+.media-intro h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(44px,6vw,88px);line-height:.98;margin:0;max-width:680px}
+.media-intro p{max-width:390px;line-height:1.6;margin:0;color:#59564f}
+.media-frame{max-width:1080px;margin:0 auto;overflow:hidden;background:#ded7ca}
+.media-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#ded7ca}
+.reveal-media{opacity:0;transform:translateY(28px) scale(.985);transition:opacity 950ms cubic-bezier(.22,1,.36,1),transform 950ms cubic-bezier(.22,1,.36,1)}
+.reveal-media.is-visible{opacity:1;transform:translateY(0) scale(1)}
+.placeholder-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:50px}
+.placeholder{aspect-ratio:1/1.08;border:1px solid rgba(42,41,38,.18);display:grid;place-items:center;text-align:center;padding:22px;color:#777064;background:linear-gradient(145deg,#f9f4eb,#e8dfd2);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.facial{background:#f0e8dc}
+.calm{background:#d9d7c2}
+.service-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 50px;margin-top:44px;max-width:900px}
+.service-list div{border-top:1px solid rgba(42,41,38,.2);padding:18px 0;font-family:Georgia,serif;font-size:clamp(22px,2.5vw,34px)}
+.instagram{padding-bottom:120px}
+.instagram-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:46px 0 28px}
+.instagram-grid .placeholder{aspect-ratio:1}
+.instagram-link{color:var(--terracotta);font-weight:700;letter-spacing:.06em}
+.method{
+  background:var(--ink);color:var(--white);
+}
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:50px}
+.method-item{border-top:1px solid rgba(255,255,255,.25);padding-top:20px}
+.method-item strong{font-size:12px;letter-spacing:.16em;color:#d7c39f}
+.method-item h3{font-family:Georgia,serif;font-size:32px;font-weight:500;margin:18px 0 10px}
+.method-item p{line-height:1.55;color:#e5dfd4}
+.booking{
+  min-height:86svh;
+  display:grid;place-items:center;
+  text-align:center;
+  background:#4b513d;color:#fff;
+  padding:80px 24px;
+}
+.booking h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(54px,8vw,118px);line-height:.92;margin:0 0 26px}
+.booking .btn-primary{background:#fff;color:var(--olive);font-size:18px;padding:16px 28px}
+.booking p{margin:0 auto 28px;font-size:20px;color:#f5f0e7}
+.location{font-size:14px;line-height:1.6;margin-top:28px;color:#e4ddcf}
+footer{
+  padding:40px clamp(20px,6vw,96px);
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  border-top:1px solid rgba(42,41,38,.1);
+  font-size:14px;
+}
+footer .footer-brand{display:flex;align-items:center;gap:18px}
+footer img{width:auto;height:auto;max-width:180px;max-height:58px;display:block}
+footer p{margin:0;color:#59564f;line-height:1.6}
+footer nav{align-items:center;flex-wrap:wrap}
+
+@media(max-width:800px){
+  nav{display:none}
+  .menu-toggle{display:block}
+  .mobile-nav{position:absolute;top:100%;left:0;right:0;display:grid;gap:2px;padding:12px 16px 18px;background:rgba(246,240,230,.97);transform:translateY(-10px);opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+  .mobile-nav.is-open{transform:none;opacity:1;pointer-events:auto}
+  .mobile-nav a{padding:12px 4px;border-bottom:1px solid rgba(42,41,38,.12);font-size:14px}
+  header{padding:14px 16px}
+  .brand img{width:auto;height:auto;max-height:30px}
+  .hero{padding-top:110px}
+  .scroll-story{height:340vh}
+  .video-wrap video{object-position:50% 50%}
+  .story-step{left:18px!important;right:18px!important;top:auto!important;bottom:12vh!important;text-align:left!important;max-width:none}
+  .story-step h2{font-size:clamp(40px,12vw,64px)}
+  .words{left:18px;right:18px;bottom:8vh;justify-content:flex-start}
+  .services{grid-template-columns:1fr}
+  .card{min-height:330px}
+  .method-grid{grid-template-columns:1fr 1fr}
+  .media-intro{display:block}
+  .media-intro p{margin-top:20px}
+  .service-list{grid-template-columns:1fr}
+  .instagram-grid{gap:8px}
+}
+@media(max-width:520px){
+  .method-grid{grid-template-columns:1fr}
+  .media-section{padding:76px 18px}
+  .placeholder-grid{gap:8px}
+  footer .footer-brand{align-items:flex-start;flex-direction:column}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .story-step,.words span,.reveal-media,.mobile-nav{transition:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#top">
+    <img src="kristasia-logo.png" alt="Beauty Center KristAsia" />
+  </a>
+  <nav>
+    <a href="#services">Servicios</a>
+    <a href="#lashes">Lashes</a>
+    <a href="#facial">Facial Studio</a>
+    <a href="#experience">Experiencia</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+  <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">☰</button>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#services">Servicios</a>
+    <a href="#lashes">Lashes</a>
+    <a href="#facial">Facial Studio</a>
+    <a href="#experience">Experiencia</a>
+    <a href="#contact">Contacto</a>
+  </div>
+  <a class="cta" href="#booking">Reservar cita</a>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="kicker">Beauty Center KristAsia</div>
+      <h1>Tu momento para<br>relajarte, renovarte<br>y brillar.</h1>
+      <p>Facial Studio &amp; Lashes en San Miguel, Desamparados.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#booking">Reservar cita</a>
+        <a class="btn btn-secondary" href="#story">Descubrir la experiencia</a>
+      </div>
+      <div class="scroll-note">Scroll to discover ↓</div>
+    </div>
+  </section>
+
+  <section class="scroll-story" id="story" aria-label="Experiencia visual de lashes">
+    <div class="sticky">
+      <div class="video-wrap">
+        <video id="scrollVideo" preload="auto" muted playsinline poster="poster.jpg" src="kristasia-scroll.mp4"></video>
+      </div>
+      <div class="story-copy">
+        <div class="story-step s1" data-start="0.02" data-end="0.20"><h2>Todo comienza<br>con una mirada.</h2></div>
+        <div class="story-step s2" data-start="0.20" data-end="0.42"><h2>Diseñadas<br>para ti.</h2><p>Forma · Curvatura · Volumen</p></div>
+        <div class="story-step s3" data-start="0.58" data-end="0.70"><h2>Cada mirada<br>es única.</h2></div>
+        <div class="words" aria-hidden="true">
+          <span data-start="0.76">Precisión</span><span data-start="0.82">Volumen</span><span data-start="0.88">Elegancia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="logo-reveal" id="statement">
+    <div>
+      <img src="kristasia-logo.png" alt="Beauty Center KristAsia" />
+      <h2>Belleza diseñada para ti.</h2>
+      <p>Técnicas certificadas, atención personalizada y tratamientos pensados para realzar tu belleza natural.</p>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <h2>Encuentra tu ritual.</h2>
+    <p class="lead">Tres universos de belleza y bienestar, pensados para acompañarte desde la mirada hasta la piel y el descanso.</p>
+    <div class="services">
+      <article class="card" id="lashes">
+        <div class="num">01 · Lashes</div>
+        <h3>Tu mirada, elevada.</h3>
+        <p>Diseños y tratamientos pensados para realzar la mirada respetando la expresión natural de tus ojos.</p>
+        <ul><li>Lifting de pestañas</li></ul>
+      </article>
+      <article class="card" id="facial">
+        <div class="num">02 · Facial Studio</div>
+        <h3>Más allá de tu mirada.</h3>
+        <p>Tratamientos pensados para limpiar, hidratar, renovar y cuidar tu piel.</p>
+        <ul><li>Limpieza facial básica</li><li>Limpieza facial profunda</li><li>Hidratación facial</li><li>Reflexología facial</li></ul>
+      </article>
+      <article class="card">
+        <div class="num">03 · Beauty &amp; Wellness</div>
+        <h3>Relájate. Renueva. Brilla.</h3>
+        <p>Un espacio cálido para bajar el ritmo y volver a ti.</p>
+        <ul><li>Masajes relajantes</li><li>Exfoliación corporal</li><li>Experiencias de bienestar</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="media-section" aria-labelledby="lash-result-title">
+    <div class="media-intro">
+      <h2 id="lash-result-title">Tu mirada,<br>elevada.</h2>
+      <p>Resultados diseñados para respetar la forma natural de tus ojos y realzar tu expresión.</p>
+    </div>
+    <div class="media-frame reveal-media">
+      <video class="lash-video" preload="metadata" muted playsinline loop poster="poster.jpg" src="kristasia-lashes-result-01.mp4" aria-label="Resultado de lashes en primer plano"></video>
+    </div>
+  </section>
+
+  <section class="media-section alt" aria-labelledby="lash-detail-title">
+    <div class="media-intro">
+      <h2 id="lash-detail-title">Diseñado desde<br>cada ángulo.</h2>
+      <p>Curvatura, longitud y definición trabajadas para acompañar la forma natural de tu mirada.</p>
+    </div>
+    <div class="media-frame reveal-media">
+      <video class="lash-video" preload="metadata" muted playsinline loop poster="poster.jpg" src="kristasia-lashes-result-02.mp4" aria-label="Detalle lateral de un diseño de lashes"></video>
+    </div>
+  </section>
+
+  <section class="section facial" aria-labelledby="facial-title">
+    <h2 id="facial-title">Más allá de tu mirada.</h2>
+    <p class="lead">Tratamientos pensados para limpiar, hidratar, renovar y cuidar tu piel.</p>
+    <div class="service-list">
+      <div>Limpieza facial básica</div><div>Limpieza facial profunda</div>
+      <div>Hidratación facial</div><div>Reflexología facial</div>
+      <div>Drenaje linfático facial</div><div>Masajes faciales</div>
+      <div>Fototerapia</div><div>Alta frecuencia facial</div>
+    </div>
+  </section>
+
+  <section class="section calm">
+    <h2>Relájate.<br>Renueva. Brilla.</h2>
+    <p class="lead">Un momento de pausa para reconectar contigo a través del cuidado y el bienestar.</p>
+    <div class="service-list"><div>Masajes relajantes</div><div>Exfoliación corporal</div><div>Experiencias de bienestar</div></div>
+  </section>
+
+  <section class="section method" id="experience">
+    <h2>La experiencia<br>KristAsia.</h2>
+    <div class="method-grid">
+      <div class="method-item"><strong>01 — CONSULTA</strong><h3>Conocemos</h3><p>Conocemos tus necesidades y el resultado que buscas.</p></div>
+      <div class="method-item"><strong>02 — DISEÑO</strong><h3>Seleccionamos</h3><p>Seleccionamos el tratamiento o experiencia adecuada.</p></div>
+      <div class="method-item"><strong>03 — EXPERIENCIA</strong><h3>Realizamos</h3><p>Realizamos el servicio con atención y precisión.</p></div>
+      <div class="method-item"><strong>04 — CUIDADO</strong><h3>Acompañamos</h3><p>Te orientamos para mantener tus resultados.</p></div>
+    </div>
+  </section>
+
+  <section class="section instagram" aria-labelledby="instagram-title">
+    <h2 id="instagram-title">Síguenos en Instagram</h2>
+    <div class="instagram-grid">
+      <!-- TODO: reemplazar estos placeholders por fotografías propias aprobadas. -->
+      <div class="placeholder">Lashes / detalle</div><div class="placeholder">Facial / ritual</div><div class="placeholder">Beauty / bienestar</div>
+    </div>
+    <a class="instagram-link" href="https://www.instagram.com/kristasia.beautycenter/" target="_blank" rel="noreferrer">@kristasia.beautycenter ↗</a>
+  </section>
+
+  <section class="booking" id="booking">
+    <div>
+      <h2>Tu momento<br>comienza aquí.</h2>
+      <p>Reserva tu experiencia KristAsia.</p>
+      <!-- TODO: añadir enlace oficial de WhatsApp/reservas. -->
+      <a class="btn btn-primary" href="#">Reservar cita</a>
+      <div class="location">San Miguel, Desamparados,<br>San José, Costa Rica.</div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="footer-brand">
+    <img src="kristasia-logo.png" alt="Beauty Center KristAsia" />
+    <p>Facial Studio &amp; Lashes<br>San Miguel, Desamparados, San José</p>
+  </div>
+  <nav aria-label="Navegación del pie de página">
+    <a href="#services">Servicios</a><a href="#experience">Experiencia</a><a href="https://www.instagram.com/kristasia.beautycenter/" target="_blank" rel="noreferrer">Instagram</a>
+  </nav>
+  <p>© Beauty Center KristAsia</p>
+</footer>
+
+<script>
+const story = document.querySelector('.scroll-story');
+const video = document.getElementById('scrollVideo');
+const steps = [...document.querySelectorAll('.story-step')];
+const words = [...document.querySelectorAll('.words span')];
+const lashVideos = [...document.querySelectorAll('.lash-video')];
+const revealMedia = [...document.querySelectorAll('.reveal-media')];
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileNav = document.getElementById('mobileNav');
+
+let duration = 10;
+let scrollRaf = null;
+
+video.addEventListener('loadedmetadata', () => {
+  if (Number.isFinite(video.duration)) duration = video.duration;
+  video.pause();
+});
+
+function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
+
+function updateStory(){
+  const rect = story.getBoundingClientRect();
+  const scrollable = story.offsetHeight - window.innerHeight;
+  const passed = clamp(-rect.top, 0, scrollable);
+  const progress = scrollable > 0 ? passed / scrollable : 0;
+
+  const targetTime = progress * Math.max(0.01, duration - 0.04);
+
+  if (video.readyState >= 2 && Math.abs(video.currentTime - targetTime) > 0.025) {
+    try { video.currentTime = targetTime; } catch(e) {}
+  }
+
+  steps.forEach(el => {
+    const start = parseFloat(el.dataset.start);
+    const end = parseFloat(el.dataset.end);
+    el.classList.toggle('active', progress >= start && progress <= end);
+  });
+
+  words.forEach(el => {
+    const start = parseFloat(el.dataset.start);
+    el.classList.toggle('active', progress >= start && progress <= 0.93);
+  });
+
+  scrollRaf = null;
+}
+
+function onScroll(){
+  if (!scrollRaf) scrollRaf = requestAnimationFrame(updateStory);
+}
+
+window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('resize', onScroll);
+updateStory();
+
+document.addEventListener('pointerdown', () => {
+  video.play().then(() => video.pause()).catch(()=>{});
+}, {once:true});
+
+function pauseOtherLashVideos(activeVideo){
+  lashVideos.forEach(otherVideo => {
+    if (otherVideo !== activeVideo) otherVideo.pause();
+  });
+}
+
+const mediaObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const media = entry.target;
+    if (media.classList.contains('reveal-media')) {
+      if (entry.isIntersecting) media.classList.add('is-visible');
+      return;
+    }
+
+    if (entry.intersectionRatio >= .45) {
+      pauseOtherLashVideos(media);
+      media.play().catch(() => {});
+    } else if (!entry.isIntersecting || entry.intersectionRatio < .2) {
+      media.pause();
+    }
+  });
+}, {threshold:[0,.2,.45,.7,1]});
+
+revealMedia.forEach(media => mediaObserver.observe(media));
+lashVideos.forEach(media => mediaObserver.observe(media));
+
+function closeMobileNav(){
+  mobileNav.classList.remove('is-open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+}
+
+menuToggle.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('is-open');
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+});
+
+mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileNav));
+</script>
+</body>
+</html>
