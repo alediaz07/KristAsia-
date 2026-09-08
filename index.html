@@ -130,6 +130,8 @@ nav a:hover{color:var(--terracotta)}
   position:relative;
   width:clamp(260px,35vw,520px);
   aspect-ratio:1937 / 812;
+  --logo-top-split:59%;
+  --logo-bottom-split:54%;
   z-index:3;
   pointer-events:none;
 }
@@ -142,8 +144,10 @@ nav a:hover{color:var(--terracotta)}
   display:block;
   will-change:transform,opacity;
 }
-.logo-half-left{clip-path:inset(0 50% 0 0)}
-.logo-half-right{clip-path:inset(0 0 0 50%)}
+.logo-half-krist{clip-path:inset(35% calc(100% - var(--logo-bottom-split)) 0 0)}
+.logo-half-asia{clip-path:inset(35% 0 0 var(--logo-bottom-split))}
+.logo-half-beauty{clip-path:inset(0 calc(100% - var(--logo-top-split)) 65% 0)}
+.logo-half-center{clip-path:inset(0 0 65% var(--logo-top-split))}
 .logo-transition-video{
   position:absolute;
   inset:0;
@@ -153,7 +157,7 @@ nav a:hover{color:var(--terracotta)}
   object-fit:cover;
   object-position:center;
   opacity:var(--transition-video-opacity,0);
-  transform:scale(var(--transition-video-scale,.12));
+  transform:scale(var(--transition-video-scale-x,.12),var(--transition-video-scale-y,.22));
   transform-origin:center;
   border-radius:var(--transition-video-radius,6px);
   background:var(--ivory);
@@ -401,8 +405,10 @@ footer nav{align-items:center;flex-wrap:wrap}
   <section class="logo-transition" id="logo-transition" aria-label="Transición visual KristAsia">
     <div class="logo-transition-sticky">
       <div class="logo-transition-mark" aria-hidden="true">
-        <img class="logo-half-left" src="kristasia-logo.png" alt="" />
-        <img class="logo-half-right" src="kristasia-logo.png" alt="" />
+        <img class="logo-half-krist logo-half-left" src="kristasia-logo.png" alt="" />
+        <img class="logo-half-beauty logo-half-left" src="kristasia-logo.png" alt="" />
+        <img class="logo-half-asia logo-half-right" src="kristasia-logo.png" alt="" />
+        <img class="logo-half-center logo-half-right" src="kristasia-logo.png" alt="" />
       </div>
       <video class="logo-transition-video" preload="auto" muted playsinline poster="poster.jpg" src="kristasia-scroll.mp4" aria-hidden="true"></video>
     </div>
@@ -539,8 +545,8 @@ const hero = document.querySelector('.hero');
 const header = document.querySelector('header');
 const logoTransition = document.querySelector('.logo-transition');
 const logoMark = document.querySelector('.logo-transition-mark');
-const logoLeft = document.querySelector('.logo-half-left');
-const logoRight = document.querySelector('.logo-half-right');
+const logoLeft = [...document.querySelectorAll('.logo-half-left')];
+const logoRight = [...document.querySelectorAll('.logo-half-right')];
 const transitionVideo = document.querySelector('.logo-transition-video');
 let logoTransitionTarget = 0;
 let logoTransitionCurrent = 0;
@@ -588,14 +594,20 @@ function animateLogoTransition(){
   const videoGrow = reduced ? 1 : smoothstep(clamp((progress - .22) / .7, 0, 1));
   const logoOut = reduced ? videoIn : smoothstep(clamp((progress - .64) / .28, 0, 1));
   const halfOffset = 28 * split;
-  const videoScale = .12 + (.88 * videoGrow);
+  const videoScaleX = .12 + (.88 * videoGrow);
+  const videoScaleY = .22 + (.78 * videoGrow);
 
-  logoLeft.style.opacity = String(logoIn * (1 - logoOut));
-  logoRight.style.opacity = String(logoIn * (1 - logoOut));
-  logoLeft.style.transform = `translateX(${-halfOffset}vw)`;
-  logoRight.style.transform = `translateX(${halfOffset}vw)`;
+  logoLeft.forEach(layer => {
+    layer.style.opacity = String(logoIn * (1 - logoOut));
+    layer.style.transform = `translateX(${-halfOffset}vw)`;
+  });
+  logoRight.forEach(layer => {
+    layer.style.opacity = String(logoIn * (1 - logoOut));
+    layer.style.transform = `translateX(${halfOffset}vw)`;
+  });
   transitionVideo.style.setProperty('--transition-video-opacity', videoIn.toFixed(3));
-  transitionVideo.style.setProperty('--transition-video-scale', videoScale.toFixed(3));
+  transitionVideo.style.setProperty('--transition-video-scale-x', videoScaleX.toFixed(3));
+  transitionVideo.style.setProperty('--transition-video-scale-y', videoScaleY.toFixed(3));
   transitionVideo.style.setProperty('--transition-video-radius', `${Math.max(0, 6 - (6 * videoGrow)).toFixed(2)}px`);
   header.style.setProperty('--logo-transition-progress', progress.toFixed(3));
   header.dataset.scene = progress > .72 ? 'dark' : 'light';
