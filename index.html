@@ -107,8 +107,18 @@ nav a:hover{color:var(--terracotta)}
 .logo-transition{
   height:280vh;
   position:relative;
-  background:var(--ivory);
+  background:transparent;
   overflow:visible;
+}
+.video-experience-stage{position:relative;isolation:isolate}
+.video-experience-sticky{
+  position:sticky;
+  top:0;
+  width:100%;
+  height:100vh;
+  height:100svh;
+  z-index:1;
+  pointer-events:none;
 }
 .logo-transition-stage{
   position:-webkit-sticky;
@@ -117,6 +127,7 @@ nav a:hover{color:var(--terracotta)}
   width:100%;
   height:100vh;
   height:100svh;
+  z-index:2;
   overflow:hidden;
   isolation:isolate;
 }
@@ -125,7 +136,7 @@ nav a:hover{color:var(--terracotta)}
   position:absolute;
   inset:0;
   z-index:-1;
-  background:var(--ivory);
+  background:transparent;
 }
 .transition-center{
   position:absolute;
@@ -162,7 +173,7 @@ nav a:hover{color:var(--terracotta)}
 .logo-half-asia{clip-path:inset(35% 0 0 var(--logo-bottom-split))}
 .logo-half-beauty{clip-path:inset(0 calc(100% - var(--logo-top-split)) 65% 0)}
 .logo-half-center{clip-path:inset(0 0 65% var(--logo-top-split))}
-.logo-transition-video{
+#scrollVideo{
   position:absolute;
   left:50%;
   top:50%;
@@ -171,20 +182,20 @@ nav a:hover{color:var(--terracotta)}
   height:100svh;
   object-fit:cover;
   object-position:center center;
-  opacity:var(--transition-video-opacity,0);
-  transform:translate(-50%,-50%) scale(var(--transition-video-scale-x,.12),var(--transition-video-scale-y,.22));
+  opacity:var(--experience-video-opacity,0);
+  transform:translate(-50%,-50%) scale(var(--experience-video-scale-x,.12),var(--experience-video-scale-y,.22));
   transform-origin:center;
-  border-radius:var(--transition-video-radius,6px);
+  border-radius:var(--experience-video-radius,6px);
   background:var(--ivory);
   will-change:transform,opacity;
 }
 .scroll-story{
   height:400vh;
   position:relative;
-  background:var(--ivory);
+  background:transparent;
 }
 .sticky{
-  position:sticky; top:0; height:100svh; overflow:hidden;
+  position:sticky; top:0; height:100svh; z-index:2; overflow:hidden;
 }
 .video-wrap{position:absolute;inset:0;background:#000}
 .video-wrap video{
@@ -371,7 +382,6 @@ footer nav{align-items:center;flex-wrap:wrap}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .story-step,.words span,.reveal-media,.statement-copy,.mobile-nav,.hero-inner,.hero,.hero:before{transition:none}
-  .logo-transition-video{border-radius:2px}
   .hero-inner{transform:none}
   header,.kicker,.hero h1 span,.hero p,.hero-actions,.hero-aside{animation:none;opacity:1;transform:none}
   .hero-aside:before{animation:none}
@@ -417,25 +427,26 @@ footer nav{align-items:center;flex-wrap:wrap}
     </div>
   </section>
 
-  <section class="logo-transition" id="logo-transition" aria-label="Transición visual KristAsia">
-    <div class="logo-transition-stage">
-      <div class="transition-center">
-        <div class="logo-transition-mark" aria-hidden="true">
-          <img class="logo-half-krist logo-half-left" src="kristasia-logo.png" alt="" />
-          <img class="logo-half-beauty logo-half-left" src="kristasia-logo.png" alt="" />
-          <img class="logo-half-asia logo-half-right" src="kristasia-logo.png" alt="" />
-          <img class="logo-half-center logo-half-right" src="kristasia-logo.png" alt="" />
-        </div>
-        <video class="logo-transition-video" preload="auto" muted playsinline src="kristasia-scroll.mp4" aria-hidden="true"></video>
-      </div>
+  <div class="video-experience-stage">
+    <div class="video-experience-sticky">
+      <video id="scrollVideo" preload="auto" muted playsinline src="kristasia-scroll.mp4" aria-label="Video de experiencia KristAsia"></video>
     </div>
-  </section>
 
-  <section class="scroll-story" id="story" aria-label="Experiencia visual de lashes">
-    <div class="sticky">
-      <div class="video-wrap">
-        <video id="scrollVideo" preload="auto" muted playsinline src="kristasia-scroll.mp4"></video>
+    <section class="logo-transition" id="logo-transition" aria-label="Transición visual KristAsia">
+      <div class="logo-transition-stage">
+        <div class="transition-center">
+          <div class="logo-transition-mark" aria-hidden="true">
+            <img class="logo-half-krist logo-half-left" src="kristasia-logo.png" alt="" />
+            <img class="logo-half-beauty logo-half-left" src="kristasia-logo.png" alt="" />
+            <img class="logo-half-asia logo-half-right" src="kristasia-logo.png" alt="" />
+            <img class="logo-half-center logo-half-right" src="kristasia-logo.png" alt="" />
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section class="scroll-story" id="story" aria-label="Experiencia visual de lashes">
+    <div class="sticky">
       <div class="story-copy">
         <div class="story-step s1" data-start="0.02" data-end="0.20"><h2>Todo comienza<br>con una mirada.</h2></div>
         <div class="story-step s2" data-start="0.20" data-end="0.42"><h2>Diseñadas<br>para ti.</h2><p>Forma · Curvatura · Volumen</p></div>
@@ -445,7 +456,8 @@ footer nav{align-items:center;flex-wrap:wrap}
         </div>
       </div>
     </div>
-  </section>
+    </section>
+  </div>
 
   <section class="logo-reveal" id="statement">
     <div class="statement-copy">
@@ -563,11 +575,8 @@ const header = document.querySelector('header');
 const logoTransition = document.querySelector('.logo-transition');
 const logoLeft = [...document.querySelectorAll('.logo-half-left')];
 const logoRight = [...document.querySelectorAll('.logo-half-right')];
-const transitionVideo = document.querySelector('.logo-transition-video');
 const FIRST_FRAME_TIME = 0.01;
-let logoTransitionTarget = 0;
-let logoTransitionCurrent = 0;
-let logoTransitionRaf = null;
+const TRANSITION_PORTION = 0.18;
 
 const story = document.querySelector('.scroll-story');
 const video = document.getElementById('scrollVideo');
@@ -581,7 +590,7 @@ const mobileNav = document.getElementById('mobileNav');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 let duration = 10;
-let scrollRaf = null;
+let experienceRaf = null;
 
 function primeVideoFrame(targetVideo){
   if (!targetVideo) return;
@@ -591,39 +600,45 @@ function primeVideoFrame(targetVideo){
   try { targetVideo.currentTime = FIRST_FRAME_TIME; } catch(e) {}
 }
 
+function primeScrollVideo(){
+  primeVideoFrame(video);
+}
+
 video.addEventListener('loadedmetadata', () => {
   if (Number.isFinite(video.duration)) duration = video.duration;
-  primeVideoFrame(video);
+  primeScrollVideo();
 });
-
-if (transitionVideo.readyState >= 2) {
-  primeVideoFrame(transitionVideo);
-} else {
-  transitionVideo.addEventListener('loadeddata', () => primeVideoFrame(transitionVideo), {once:true});
-}
+if (video.readyState >= 2) primeScrollVideo();
+else video.addEventListener('loadeddata', primeScrollVideo, {once:true});
 
 function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
 
 function smoothstep(value){ return value * value * (3 - 2 * value); }
 
-function updateLogoTransition(){
+function getTransitionProgress(){
   const rect = logoTransition.getBoundingClientRect();
   const scrollable = logoTransition.offsetHeight - window.innerHeight;
-  logoTransitionTarget = clamp(-rect.top / Math.max(1, scrollable), 0, 1);
-  if (!logoTransitionRaf) logoTransitionRaf = requestAnimationFrame(animateLogoTransition);
+  return clamp(-rect.top / Math.max(1, scrollable), 0, 1);
 }
 
-function animateLogoTransition(){
-  logoTransitionCurrent = logoTransitionTarget;
-  const progress = logoTransitionCurrent;
+function getStoryProgress(){
+  const rect = story.getBoundingClientRect();
+  const scrollable = story.offsetHeight - window.innerHeight;
+  const passed = clamp(-rect.top, 0, scrollable);
+  return scrollable > 0 ? passed / scrollable : 0;
+}
+
+function updateExperience(){
+  const transitionProgress = getTransitionProgress();
+  const storyProgress = getStoryProgress();
   const reduced = reduceMotion.matches;
-  const logoIn = smoothstep(clamp(progress / .18, 0, 1));
-  const split = reduced ? 0 : smoothstep(clamp((progress - .14) / .34, 0, 1));
+  const logoIn = smoothstep(clamp(transitionProgress / .18, 0, 1));
+  const split = reduced ? 0 : smoothstep(clamp((transitionProgress - .14) / .34, 0, 1));
   const videoIn = reduced
-    ? smoothstep(clamp((progress - .18) / .42, 0, 1))
-    : smoothstep(clamp((progress - .22) / .24, 0, 1));
-  const videoGrow = reduced ? 1 : smoothstep(clamp((progress - .22) / .7, 0, 1));
-  const logoOut = reduced ? videoIn : smoothstep(clamp((progress - .64) / .28, 0, 1));
+    ? smoothstep(clamp((transitionProgress - .18) / .42, 0, 1))
+    : smoothstep(clamp((transitionProgress - .22) / .24, 0, 1));
+  const videoGrow = reduced ? 1 : smoothstep(clamp((transitionProgress - .22) / .7, 0, 1));
+  const logoOut = reduced ? videoIn : smoothstep(clamp((transitionProgress - .64) / .28, 0, 1));
   const halfOffset = 28 * split;
   const videoScaleX = .12 + (.88 * videoGrow);
   const videoScaleY = .22 + (.78 * videoGrow);
@@ -636,35 +651,14 @@ function animateLogoTransition(){
     layer.style.opacity = String(logoIn * (1 - logoOut));
     layer.style.transform = `translate(-50%,-50%) translateX(${halfOffset}vw)`;
   });
-  transitionVideo.style.setProperty('--transition-video-opacity', videoIn.toFixed(3));
-  transitionVideo.style.setProperty('--transition-video-scale-x', videoScaleX.toFixed(3));
-  transitionVideo.style.setProperty('--transition-video-scale-y', videoScaleY.toFixed(3));
-  transitionVideo.style.setProperty('--transition-video-radius', `${Math.max(0, 6 - (6 * videoGrow)).toFixed(2)}px`);
-  if (transitionVideo.readyState >= 2) {
-    transitionVideo.pause();
-    if (Math.abs(transitionVideo.currentTime - FIRST_FRAME_TIME) > .001) {
-      transitionVideo.currentTime = FIRST_FRAME_TIME;
-    }
-  }
-  if (progress >= .985 && transitionVideo.readyState >= 2 && video.readyState >= 2) {
-    video.currentTime = transitionVideo.currentTime;
-  }
-  header.style.setProperty('--logo-transition-progress', progress.toFixed(3));
-  header.dataset.scene = progress > .72 ? 'dark' : 'light';
-  logoTransitionRaf = null;
-}
-
-window.addEventListener('scroll', updateLogoTransition, {passive:true});
-window.addEventListener('resize', updateLogoTransition);
-updateLogoTransition();
-
-function updateStory(){
-  const rect = story.getBoundingClientRect();
-  const scrollable = story.offsetHeight - window.innerHeight;
-  const passed = clamp(-rect.top, 0, scrollable);
-  const progress = scrollable > 0 ? passed / scrollable : 0;
-
-  const targetTime = FIRST_FRAME_TIME + progress * Math.max(0, duration - FIRST_FRAME_TIME - 0.04);
+  video.style.setProperty('--experience-video-opacity', transitionProgress >= 1 ? '1' : videoIn.toFixed(3));
+  video.style.setProperty('--experience-video-scale-x', transitionProgress >= 1 ? '1' : videoScaleX.toFixed(3));
+  video.style.setProperty('--experience-video-scale-y', transitionProgress >= 1 ? '1' : videoScaleY.toFixed(3));
+  video.style.setProperty('--experience-video-radius', `${Math.max(0, 6 - (6 * videoGrow)).toFixed(2)}px`);
+  const storyStartTime = duration * TRANSITION_PORTION;
+  const targetTime = transitionProgress < 1
+    ? FIRST_FRAME_TIME + smoothstep(clamp((transitionProgress - .28) / .72, 0, 1)) * Math.max(0, storyStartTime - FIRST_FRAME_TIME)
+    : storyStartTime + storyProgress * Math.max(0, duration - storyStartTime - 0.04);
 
   if (video.readyState >= 2 && Math.abs(video.currentTime - targetTime) > 0.025) {
     try { video.currentTime = targetTime; } catch(e) {}
@@ -673,28 +667,26 @@ function updateStory(){
   steps.forEach(el => {
     const start = parseFloat(el.dataset.start);
     const end = parseFloat(el.dataset.end);
-    el.classList.toggle('active', progress >= start && progress <= end);
+    el.classList.toggle('active', storyProgress >= start && storyProgress <= end);
   });
 
   words.forEach(el => {
     const start = parseFloat(el.dataset.start);
-    el.classList.toggle('active', progress >= start && progress <= 0.93);
+    el.classList.toggle('active', storyProgress >= start && storyProgress <= 0.93);
   });
 
-  scrollRaf = null;
+  header.style.setProperty('--logo-transition-progress', transitionProgress.toFixed(3));
+  header.dataset.scene = transitionProgress > .72 ? 'dark' : 'light';
+  experienceRaf = null;
 }
 
 function onScroll(){
-  if (!scrollRaf) scrollRaf = requestAnimationFrame(updateStory);
+  if (!experienceRaf) experienceRaf = requestAnimationFrame(updateExperience);
 }
 
 window.addEventListener('scroll', onScroll, {passive:true});
 window.addEventListener('resize', onScroll);
-updateStory();
-
-document.addEventListener('pointerdown', () => {
-  video.play().then(() => video.pause()).catch(()=>{});
-}, {once:true});
+onScroll();
 
 function pauseOtherLashVideos(activeVideo){
   lashVideos.forEach(otherVideo => {
