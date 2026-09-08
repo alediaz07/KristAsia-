@@ -128,14 +128,15 @@ nav a:hover{color:var(--terracotta)}
 .words span.active{opacity:1;transform:none}
 
 .logo-reveal{
-  min-height:92svh;
+  min-height:min(78svh,760px);
   display:grid;
   place-items:center;
   padding:80px 24px;
   text-align:center;
 }
-.logo-reveal img{max-width:min(680px,86vw);width:auto;height:auto;display:block;margin:0 auto}
-.logo-reveal h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(44px,6vw,84px);line-height:1;margin:56px 0 20px}
+.statement-copy{opacity:0;transform:translateY(14px);transition:opacity 900ms cubic-bezier(.22,1,.36,1),transform 900ms cubic-bezier(.22,1,.36,1)}
+.statement-copy.is-visible{opacity:1;transform:translateY(0)}
+.logo-reveal h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(44px,6vw,84px);line-height:1;margin:0 0 20px}
 .logo-reveal p{max-width:650px;margin:0 auto;font-size:18px;line-height:1.6;color:#59564f}
 
 .section{
@@ -222,6 +223,7 @@ footer nav{align-items:center;flex-wrap:wrap}
   .brand img{width:auto;height:auto;max-height:30px}
   .hero{padding-top:110px}
   .scroll-story{height:340vh}
+  .logo-reveal{min-height:68svh;padding:64px 24px}
   .video-wrap video{object-position:50% 50%}
   .story-step{left:18px!important;right:18px!important;top:auto!important;bottom:12vh!important;text-align:left!important;max-width:none}
   .story-step h2{font-size:clamp(40px,12vw,64px)}
@@ -242,7 +244,7 @@ footer nav{align-items:center;flex-wrap:wrap}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .story-step,.words span,.reveal-media,.mobile-nav{transition:none}
+  .story-step,.words span,.reveal-media,.statement-copy,.mobile-nav{transition:none}
 }
 </style>
 </head>
@@ -300,8 +302,7 @@ footer nav{align-items:center;flex-wrap:wrap}
   </section>
 
   <section class="logo-reveal" id="statement">
-    <div>
-      <img src="kristasia-logo.png" alt="Beauty Center KristAsia" />
+    <div class="statement-copy">
       <h2>Belleza diseñada para ti.</h2>
       <p>Técnicas certificadas, atención personalizada y tratamientos pensados para realzar tu belleza natural.</p>
     </div>
@@ -417,6 +418,7 @@ const steps = [...document.querySelectorAll('.story-step')];
 const words = [...document.querySelectorAll('.words span')];
 const lashVideos = [...document.querySelectorAll('.lash-video')];
 const revealMedia = [...document.querySelectorAll('.reveal-media')];
+const statementCopy = document.querySelector('.statement-copy');
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNav = document.getElementById('mobileNav');
 
@@ -477,7 +479,7 @@ function pauseOtherLashVideos(activeVideo){
 const mediaObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     const media = entry.target;
-    if (media.classList.contains('reveal-media')) {
+    if (media.classList.contains('reveal-media') || media.classList.contains('statement-copy')) {
       if (entry.isIntersecting) media.classList.add('is-visible');
       return;
     }
@@ -492,6 +494,7 @@ const mediaObserver = new IntersectionObserver(entries => {
 }, {threshold:[0,.2,.45,.7,1]});
 
 revealMedia.forEach(media => mediaObserver.observe(media));
+if (statementCopy) mediaObserver.observe(statementCopy);
 lashVideos.forEach(media => mediaObserver.observe(media));
 
 function closeMobileNav(){
