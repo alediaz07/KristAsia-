@@ -18,7 +18,6 @@
   --ink:#2a2926;
   --olive:#7f8261;
   --terracotta:#b8755c;
-  --gold:#c2a16a;
   --white:#fffaf2;
 }
 *{box-sizing:border-box}
@@ -64,9 +63,8 @@ nav a:hover{color:var(--terracotta)}
     radial-gradient(circle at 14% 78%,rgba(184,117,92,.07),transparent 29%),
     var(--ivory);
 }
-.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:#111;opacity:calc(var(--hero-progress, 0) * .16);pointer-events:none;transition:opacity .12s linear}
 .hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.14;pointer-events:none;background-image:radial-gradient(rgba(42,41,38,.16) .55px,transparent .55px);background-size:5px 5px;mask-image:linear-gradient(to bottom,transparent,black 20%,transparent 90%)}
-.hero-inner{width:min(100%,1180px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.55fr);align-items:end;gap:clamp(32px,8vw,150px);margin:0 auto;transform:translateY(calc(var(--hero-progress, 0) * -40px));opacity:1;transition:transform .12s linear}
+.hero-inner{width:min(100%,1180px);margin:0 auto;opacity:1}
 .hero-inner{display:block;text-align:center}
 .hero-copy{width:min(100%,900px);margin-inline:auto}
 .kicker{letter-spacing:.2em;text-transform:uppercase;font:600 11px/1.4 "Manrope",sans-serif;color:var(--olive);opacity:0;transform:translateY(16px);animation:hero-rise 800ms cubic-bezier(.22,1,.36,1) forwards}
@@ -98,7 +96,6 @@ nav a:hover{color:var(--terracotta)}
 .btn-secondary:hover{border-color:var(--terracotta);color:var(--terracotta)}
 .hero-aside{max-width:180px;margin:52px auto 0;padding:0;color:#59564f;font:500 10px/1.8 "Manrope",sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:0;animation:hero-fade 900ms 650ms cubic-bezier(.22,1,.36,1) forwards}
 .hero-aside:before{content:"";display:block;width:1px;height:58px;margin:0 auto 16px;background:var(--terracotta);animation:scroll-line 2.4s 1.2s ease-in-out infinite}
-.scroll-note{display:none}
 @keyframes hero-rise{to{opacity:1;transform:translateY(0)}}
 @keyframes hero-fade{to{opacity:.72}}
 @keyframes scroll-line{0%,100%{transform:scaleY(.55);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
@@ -339,7 +336,6 @@ footer nav{align-items:center;flex-wrap:wrap}
   header{padding:14px 16px}
   .brand img{width:auto;height:auto;max-height:30px}
   .hero{min-height:100svh;padding:128px 22px 64px;align-items:center}
-  .hero-inner{transform:translateY(calc(var(--hero-progress, 0) * -24px))}
   .hero h1{font-size:clamp(62px,17vw,96px);line-height:.86;margin:34px auto 38px;width:100%}
   .hero p{font-size:14px;line-height:1.55;max-width:calc(100% - 40px);margin-bottom:38px}
   .hero-actions{display:grid;justify-items:start;gap:10px}
@@ -381,7 +377,7 @@ footer nav{align-items:center;flex-wrap:wrap}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .story-step,.words span,.reveal-media,.statement-copy,.mobile-nav,.hero-inner,.hero,.hero:before{transition:none}
+  .story-step,.words span,.reveal-media,.statement-copy,.mobile-nav,.hero{transition:none}
   .hero-inner{transform:none}
   header,.kicker,.hero h1 span,.hero p,.hero-actions,.hero-aside{animation:none;opacity:1;transform:none}
   .hero-aside:before{animation:none}
@@ -570,7 +566,6 @@ footer nav{align-items:center;flex-wrap:wrap}
 </footer>
 
 <script>
-const hero = document.querySelector('.hero');
 const header = document.querySelector('header');
 const logoTransition = document.querySelector('.logo-transition');
 const logoLeft = [...document.querySelectorAll('.logo-half-left')];
