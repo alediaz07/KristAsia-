@@ -9,6 +9,9 @@
 <meta property="og:description" content="Relájate, renueva, brilla en San Miguel, Desamparados." />
 <meta property="og:image" content="kristasia-logo.png" />
 <meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 :root{
   --ivory:#f6f0e6;
@@ -34,6 +37,7 @@ header{
   padding:18px clamp(18px,4vw,64px);
   background:linear-gradient(to bottom,rgba(246,240,230,.96),rgba(246,240,230,.7),transparent);
   backdrop-filter:blur(8px);
+  animation:header-fade 900ms cubic-bezier(.22,1,.36,1) both;
 }
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.08em}
 .brand img{width:auto;height:auto;max-height:34px;display:block}
@@ -49,28 +53,53 @@ nav a:hover{color:var(--terracotta)}
 .hero{
   min-height:100svh;
   display:grid;
-  place-items:center;
-  text-align:center;
-  padding:120px 24px 56px;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  padding:132px clamp(22px,8vw,128px) 72px;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 82% 32%,rgba(194,161,106,.12),transparent 25%),
+    radial-gradient(circle at 14% 78%,rgba(184,117,92,.07),transparent 29%),
+    var(--ivory);
 }
-.hero-inner{max-width:980px}
-.kicker{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--olive);font-weight:700}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:#111;opacity:calc(var(--hero-progress, 0) * .16);pointer-events:none;transition:opacity .12s linear}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.14;pointer-events:none;background-image:radial-gradient(rgba(42,41,38,.16) .55px,transparent .55px);background-size:5px 5px;mask-image:linear-gradient(to bottom,transparent,black 20%,transparent 90%)}
+.hero-inner{width:min(100%,1180px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.55fr);align-items:end;gap:clamp(32px,8vw,150px);margin:0 auto;transform:translateY(calc(var(--hero-progress, 0) * -38px));opacity:calc(1 - var(--hero-progress, 0) * .72);transition:opacity .12s linear,transform .12s linear}
+.hero-copy{max-width:780px}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font:600 11px/1.4 "Manrope",sans-serif;color:var(--olive);opacity:0;transform:translateY(16px);animation:hero-rise 800ms cubic-bezier(.22,1,.36,1) forwards}
 .hero h1{
-  font-family:Georgia, "Times New Roman", serif;
+  font-family:"Cormorant Garamond", Georgia, serif;
   font-weight:500;
-  font-size:clamp(58px,9vw,132px);
-  line-height:.92;
-  margin:18px 0 26px;
+  font-size:clamp(72px,10.4vw,156px);
+  line-height:.78;
+  letter-spacing:-.035em;
+  margin:26px 0 34px;
+  max-width:780px;
 }
-.hero p{font-size:clamp(18px,2vw,26px);max-width:720px;margin:0 auto 34px;line-height:1.45}
-.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.hero h1 span{display:block;opacity:0;transform:translateY(34px);animation:hero-rise 950ms cubic-bezier(.22,1,.36,1) forwards}
+.hero h1 span:nth-child(2){animation-delay:110ms;margin-left:clamp(18px,7vw,110px);font-style:italic;color:var(--terracotta)}
+.hero h1 span:nth-child(3){animation-delay:220ms;margin-left:clamp(8px,3vw,48px)}
+.hero p{font:400 clamp(15px,1.25vw,19px)/1.7 "Manrope",sans-serif;max-width:520px;margin:0 0 34px;color:#59564f;opacity:0;transform:translateY(20px);animation:hero-rise 850ms 340ms cubic-bezier(.22,1,.36,1) forwards}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(16px);animation:hero-rise 800ms 480ms cubic-bezier(.22,1,.36,1) forwards}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
-  border-radius:999px;padding:14px 22px;font-weight:700
+  border-radius:999px;padding:14px 22px;font:600 12px/1 "Manrope",sans-serif;letter-spacing:.05em;transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease
 }
+.btn:hover{transform:translateY(-2px)}
 .btn-primary{background:var(--ink);color:var(--white)}
-.btn-secondary{border:1px solid rgba(42,41,38,.25)}
-.scroll-note{margin-top:52px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.65}
+.btn-primary:after{content:"→";font-size:17px;line-height:0;margin-left:10px;transition:transform .25s ease}
+.btn-primary:hover{background:var(--terracotta)}
+.btn-primary:hover:after{transform:translateX(2px)}
+.btn-secondary{border:1px solid rgba(42,41,38,.28)}
+.btn-secondary:hover{border-color:var(--terracotta);color:var(--terracotta)}
+.hero-aside{align-self:end;max-width:180px;padding-bottom:5px;color:#59564f;font:500 10px/1.8 "Manrope",sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:0;animation:hero-fade 900ms 650ms cubic-bezier(.22,1,.36,1) forwards}
+.hero-aside:before{content:"";display:block;width:1px;height:58px;margin-bottom:16px;background:var(--terracotta);animation:scroll-line 2.4s 1.2s ease-in-out infinite}
+.scroll-note{display:none}
+@keyframes hero-rise{to{opacity:1;transform:translateY(0)}}
+@keyframes hero-fade{to{opacity:.72}}
+@keyframes scroll-line{0%,100%{transform:scaleY(.55);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+@keyframes header-fade{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 
 .scroll-story{
   height:400vh;
@@ -221,7 +250,14 @@ footer nav{align-items:center;flex-wrap:wrap}
   .mobile-nav a{padding:12px 4px;border-bottom:1px solid rgba(42,41,38,.12);font-size:14px}
   header{padding:14px 16px}
   .brand img{width:auto;height:auto;max-height:30px}
-  .hero{padding-top:110px}
+  .hero{min-height:100svh;padding:128px 22px 64px;align-items:center}
+  .hero-inner{display:block;transform:translateY(calc(var(--hero-progress, 0) * -24px))}
+  .hero h1{font-size:clamp(62px,17vw,96px);line-height:.82;margin:24px 0 30px}
+  .hero h1 span:nth-child(2),.hero h1 span:nth-child(3){margin-left:0}
+  .hero p{font-size:14px;line-height:1.65;max-width:330px;margin-bottom:28px}
+  .hero-actions{display:grid;justify-items:start;gap:10px}
+  .hero-aside{margin-top:52px;max-width:none}
+  .hero-aside:before{height:42px;margin-bottom:12px}
   .scroll-story{height:340vh}
   .logo-reveal{min-height:68svh;padding:64px 24px}
   .video-wrap video{object-position:50% 50%}
@@ -244,7 +280,9 @@ footer nav{align-items:center;flex-wrap:wrap}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .story-step,.words span,.reveal-media,.statement-copy,.mobile-nav{transition:none}
+  .story-step,.words span,.reveal-media,.statement-copy,.mobile-nav,.hero-inner{transition:none}
+  header,.kicker,.hero h1 span,.hero p,.hero-actions,.hero-aside{animation:none;opacity:1;transform:none}
+  .hero-aside:before{animation:none}
 }
 </style>
 </head>
@@ -274,14 +312,16 @@ footer nav{align-items:center;flex-wrap:wrap}
 <main id="top">
   <section class="hero">
     <div class="hero-inner">
-      <div class="kicker">Beauty Center KristAsia</div>
-      <h1>Tu momento para<br>relajarte, renovarte<br>y brillar.</h1>
-      <p>Facial Studio &amp; Lashes en San Miguel, Desamparados.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#booking">Reservar cita</a>
-        <a class="btn btn-secondary" href="#story">Descubrir la experiencia</a>
+      <div class="hero-copy">
+        <div class="kicker">Beauty Center · San Miguel</div>
+        <h1><span>La mirada</span><span>que habla</span><span>por ti.</span></h1>
+        <p>Lashes, cuidado facial y experiencias diseñadas para realzar tu belleza natural.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#booking">Reserva tu experiencia</a>
+          <a class="btn btn-secondary" href="#story">Descubre KristAsia</a>
+        </div>
       </div>
-      <div class="scroll-note">Scroll to discover ↓</div>
+      <div class="hero-aside">Scroll<br>to discover</div>
     </div>
   </section>
 
@@ -412,6 +452,13 @@ footer nav{align-items:center;flex-wrap:wrap}
 </footer>
 
 <script>
+const hero = document.querySelector('.hero');
+
+function updateHeroTransition(){
+  const progress = clamp(window.scrollY / Math.max(1, hero.offsetHeight * .72), 0, 1);
+  hero.style.setProperty('--hero-progress', progress.toFixed(3));
+}
+
 const story = document.querySelector('.scroll-story');
 const video = document.getElementById('scrollVideo');
 const steps = [...document.querySelectorAll('.story-step')];
@@ -431,6 +478,10 @@ video.addEventListener('loadedmetadata', () => {
 });
 
 function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
+
+window.addEventListener('scroll', updateHeroTransition, {passive:true});
+window.addEventListener('resize', updateHeroTransition);
+updateHeroTransition();
 
 function updateStory(){
   const rect = story.getBoundingClientRect();
