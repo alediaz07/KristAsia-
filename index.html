@@ -35,7 +35,7 @@ header{
   position:fixed; inset:0 0 auto 0; z-index:50;
   display:flex; align-items:center; justify-content:space-between;
   padding:18px clamp(18px,4vw,64px);
-  background:linear-gradient(to bottom,rgba(246,240,230,calc(.96 - var(--hero-transition, 0) * .78)),rgba(246,240,230,calc(.7 - var(--hero-transition, 0) * .62)),transparent);
+  background:linear-gradient(to bottom,rgba(246,240,230,calc(.96 - var(--logo-transition-progress, 0) * .78)),rgba(246,240,230,calc(.7 - var(--logo-transition-progress, 0) * .62)),transparent);
   backdrop-filter:blur(8px);
   animation:header-fade 900ms cubic-bezier(.22,1,.36,1) both;
 }
@@ -59,14 +59,12 @@ nav a:hover{color:var(--terracotta)}
   overflow:hidden;
   padding:132px clamp(22px,8vw,128px) 72px;
   isolation:isolate;
-  z-index:2;
-  opacity:calc(1 - var(--hero-transition, 0));
   background:
     radial-gradient(circle at 82% 32%,rgba(194,161,106,.12),transparent 25%),
     radial-gradient(circle at 14% 78%,rgba(184,117,92,.07),transparent 29%),
     var(--ivory);
 }
-.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(to bottom,#f6f0e6 0%,#5a5149 72%,#111 100%);opacity:calc(var(--hero-transition, 0) * .7);pointer-events:none}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:#111;opacity:calc(var(--hero-progress, 0) * .16);pointer-events:none;transition:opacity .12s linear}
 .hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.14;pointer-events:none;background-image:radial-gradient(rgba(42,41,38,.16) .55px,transparent .55px);background-size:5px 5px;mask-image:linear-gradient(to bottom,transparent,black 20%,transparent 90%)}
 .hero-inner{width:min(100%,1180px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.55fr);align-items:end;gap:clamp(32px,8vw,150px);margin:0 auto;transform:translateY(calc(var(--hero-progress, 0) * -40px));opacity:1;transition:transform .12s linear}
 .hero-inner{display:block;text-align:center}
@@ -106,6 +104,61 @@ nav a:hover{color:var(--terracotta)}
 @keyframes scroll-line{0%,100%{transform:scaleY(.55);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
 @keyframes header-fade{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 
+.logo-transition{
+  height:260vh;
+  position:relative;
+  background:var(--ivory);
+  overflow:hidden;
+}
+.logo-transition-sticky{
+  position:sticky;
+  top:0;
+  height:100svh;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+}
+.logo-transition-sticky:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:var(--ivory);
+}
+.logo-transition-mark{
+  position:relative;
+  width:clamp(260px,35vw,520px);
+  aspect-ratio:1937 / 812;
+  z-index:3;
+  pointer-events:none;
+}
+.logo-transition-mark img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  will-change:transform,opacity;
+}
+.logo-half-left{clip-path:inset(0 50% 0 0)}
+.logo-half-right{clip-path:inset(0 0 0 50%)}
+.logo-transition-video{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  opacity:var(--transition-video-opacity,0);
+  transform:scale(var(--transition-video-scale,.12));
+  transform-origin:center;
+  border-radius:var(--transition-video-radius,6px);
+  background:var(--ivory);
+  will-change:transform,opacity;
+}
 .scroll-story{
   height:400vh;
   position:relative;
@@ -125,24 +178,6 @@ nav a:hover{color:var(--terracotta)}
     linear-gradient(90deg,rgba(0,0,0,.38),transparent 34%,transparent 66%,rgba(0,0,0,.15)),
     linear-gradient(to top,rgba(0,0,0,.24),transparent 35%);
   pointer-events:none;
-}
-.scroll-story.is-hero-transition .sticky{
-  position:fixed;
-  inset:0;
-  z-index:1;
-  opacity:var(--hero-transition, 0);
-  transform:scale(calc(1.05 - var(--hero-transition, 0) * .05));
-  transform-origin:center;
-  will-change:transform,opacity;
-}
-.scroll-story.is-hero-transition .sticky::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:2;
-  pointer-events:none;
-  background:linear-gradient(to bottom,rgba(246,240,230,.72),rgba(41,38,35,.2) 58%,rgba(17,17,17,.1));
-  opacity:calc(1 - var(--hero-transition, 0));
 }
 .story-copy{
   position:absolute;inset:0;pointer-events:none;
@@ -281,6 +316,9 @@ footer nav{align-items:center;flex-wrap:wrap}
   .hero-actions{justify-items:center}
   .hero-aside{margin-top:48px;max-width:none}
   .hero-aside:before{height:42px;margin-bottom:12px}
+  .logo-transition{height:240vh}
+  .logo-transition-mark{width:clamp(200px,62vw,280px)}
+  .logo-transition-sticky{height:100svh}
   .scroll-story{height:340vh}
   .logo-reveal{min-height:68svh;padding:64px 24px}
   .video-wrap video{object-position:50% 50%}
@@ -314,7 +352,7 @@ footer nav{align-items:center;flex-wrap:wrap}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .story-step,.words span,.reveal-media,.statement-copy,.mobile-nav,.hero-inner,.hero,.hero:before{transition:none}
-  .scroll-story.is-hero-transition .sticky{transform:none}
+  .logo-transition-video{border-radius:2px}
   .hero-inner{transform:none}
   header,.kicker,.hero h1 span,.hero p,.hero-actions,.hero-aside{animation:none;opacity:1;transform:none}
   .hero-aside:before{animation:none}
@@ -357,6 +395,16 @@ footer nav{align-items:center;flex-wrap:wrap}
         </div>
       </div>
       <div class="hero-aside">Scroll<br>to discover</div>
+    </div>
+  </section>
+
+  <section class="logo-transition" id="logo-transition" aria-label="Transición visual KristAsia">
+    <div class="logo-transition-sticky">
+      <div class="logo-transition-mark" aria-hidden="true">
+        <img class="logo-half-left" src="kristasia-logo.png" alt="" />
+        <img class="logo-half-right" src="kristasia-logo.png" alt="" />
+      </div>
+      <video class="logo-transition-video" preload="auto" muted playsinline poster="poster.jpg" src="kristasia-scroll.mp4" aria-hidden="true"></video>
     </div>
   </section>
 
@@ -489,16 +537,14 @@ footer nav{align-items:center;flex-wrap:wrap}
 <script>
 const hero = document.querySelector('.hero');
 const header = document.querySelector('header');
-let heroTransitionTarget = 0;
-let heroTransitionCurrent = 0;
-let heroTransitionRaf = null;
-
-function updateHeroTransition(){
-  const rect = hero.getBoundingClientRect();
-  const transitionStart = hero.offsetHeight * .65;
-  heroTransitionTarget = clamp((-rect.top - transitionStart) / Math.max(1, hero.offsetHeight - transitionStart), 0, 1);
-  if (!heroTransitionRaf) heroTransitionRaf = requestAnimationFrame(animateHeroTransition);
-}
+const logoTransition = document.querySelector('.logo-transition');
+const logoMark = document.querySelector('.logo-transition-mark');
+const logoLeft = document.querySelector('.logo-half-left');
+const logoRight = document.querySelector('.logo-half-right');
+const transitionVideo = document.querySelector('.logo-transition-video');
+let logoTransitionTarget = 0;
+let logoTransitionCurrent = 0;
+let logoTransitionRaf = null;
 
 const story = document.querySelector('.scroll-story');
 const video = document.getElementById('scrollVideo');
@@ -521,26 +567,44 @@ video.addEventListener('loadedmetadata', () => {
 
 function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
 
-function animateHeroTransition(){
-  const easing = 1;
-  heroTransitionCurrent += (heroTransitionTarget - heroTransitionCurrent) * easing;
-  const settled = Math.abs(heroTransitionTarget - heroTransitionCurrent) <= .001;
-  if (settled) heroTransitionCurrent = heroTransitionTarget;
-  hero.style.setProperty('--hero-progress', heroTransitionCurrent.toFixed(3));
-  hero.style.setProperty('--hero-transition', heroTransitionCurrent.toFixed(3));
-  header.dataset.scene = heroTransitionCurrent > .62 ? 'dark' : 'light';
-  story.classList.toggle('is-hero-transition', heroTransitionCurrent > .001 && heroTransitionCurrent < .999);
+function smoothstep(value){ return value * value * (3 - 2 * value); }
 
-  if (!settled) {
-    heroTransitionRaf = requestAnimationFrame(animateHeroTransition);
-  } else {
-    heroTransitionRaf = null;
-  }
+function updateLogoTransition(){
+  const rect = logoTransition.getBoundingClientRect();
+  const scrollable = logoTransition.offsetHeight - window.innerHeight;
+  logoTransitionTarget = clamp(-rect.top / Math.max(1, scrollable), 0, 1);
+  if (!logoTransitionRaf) logoTransitionRaf = requestAnimationFrame(animateLogoTransition);
 }
 
-window.addEventListener('scroll', updateHeroTransition, {passive:true});
-window.addEventListener('resize', updateHeroTransition);
-updateHeroTransition();
+function animateLogoTransition(){
+  logoTransitionCurrent = logoTransitionTarget;
+  const progress = logoTransitionCurrent;
+  const reduced = reduceMotion.matches;
+  const logoIn = smoothstep(clamp(progress / .18, 0, 1));
+  const split = reduced ? 0 : smoothstep(clamp((progress - .14) / .34, 0, 1));
+  const videoIn = reduced
+    ? smoothstep(clamp((progress - .18) / .42, 0, 1))
+    : smoothstep(clamp((progress - .22) / .24, 0, 1));
+  const videoGrow = reduced ? 1 : smoothstep(clamp((progress - .22) / .7, 0, 1));
+  const logoOut = reduced ? videoIn : smoothstep(clamp((progress - .64) / .28, 0, 1));
+  const halfOffset = 28 * split;
+  const videoScale = .12 + (.88 * videoGrow);
+
+  logoLeft.style.opacity = String(logoIn * (1 - logoOut));
+  logoRight.style.opacity = String(logoIn * (1 - logoOut));
+  logoLeft.style.transform = `translateX(${-halfOffset}vw)`;
+  logoRight.style.transform = `translateX(${halfOffset}vw)`;
+  transitionVideo.style.setProperty('--transition-video-opacity', videoIn.toFixed(3));
+  transitionVideo.style.setProperty('--transition-video-scale', videoScale.toFixed(3));
+  transitionVideo.style.setProperty('--transition-video-radius', `${Math.max(0, 6 - (6 * videoGrow)).toFixed(2)}px`);
+  header.style.setProperty('--logo-transition-progress', progress.toFixed(3));
+  header.dataset.scene = progress > .72 ? 'dark' : 'light';
+  logoTransitionRaf = null;
+}
+
+window.addEventListener('scroll', updateLogoTransition, {passive:true});
+window.addEventListener('resize', updateLogoTransition);
+updateLogoTransition();
 
 function updateStory(){
   const rect = story.getBoundingClientRect();
