@@ -170,7 +170,7 @@ nav a:hover{color:var(--terracotta)}
   width:100vw;
   height:100svh;
   object-fit:cover;
-  object-position:center;
+  object-position:center center;
   opacity:var(--transition-video-opacity,0);
   transform:translate(-50%,-50%) scale(var(--transition-video-scale-x,.12),var(--transition-video-scale-y,.22));
   transform-origin:center;
@@ -188,7 +188,7 @@ nav a:hover{color:var(--terracotta)}
 }
 .video-wrap{position:absolute;inset:0;background:#000}
 .video-wrap video{
-  width:100%; height:100%; object-fit:cover; object-position:center;
+  width:100%; height:100%; object-fit:cover; object-position:center center;
   display:block;
 }
 .video-wrap::after{
@@ -434,7 +434,7 @@ footer nav{align-items:center;flex-wrap:wrap}
   <section class="scroll-story" id="story" aria-label="Experiencia visual de lashes">
     <div class="sticky">
       <div class="video-wrap">
-        <video id="scrollVideo" preload="auto" muted playsinline poster="poster.jpg" src="kristasia-scroll.mp4"></video>
+        <video id="scrollVideo" preload="auto" muted playsinline src="kristasia-scroll.mp4"></video>
       </div>
       <div class="story-copy">
         <div class="story-step s1" data-start="0.02" data-end="0.20"><h2>Todo comienza<br>con una mirada.</h2></div>
@@ -564,6 +564,7 @@ const logoTransition = document.querySelector('.logo-transition');
 const logoLeft = [...document.querySelectorAll('.logo-half-left')];
 const logoRight = [...document.querySelectorAll('.logo-half-right')];
 const transitionVideo = document.querySelector('.logo-transition-video');
+const FIRST_FRAME_TIME = 0.01;
 let logoTransitionTarget = 0;
 let logoTransitionCurrent = 0;
 let logoTransitionRaf = null;
@@ -582,17 +583,24 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let duration = 10;
 let scrollRaf = null;
 
+function primeVideoFrame(targetVideo){
+  if (!targetVideo) return;
+  targetVideo.muted = true;
+  targetVideo.playsInline = true;
+  targetVideo.pause();
+  try { targetVideo.currentTime = FIRST_FRAME_TIME; } catch(e) {}
+}
+
 video.addEventListener('loadedmetadata', () => {
   if (Number.isFinite(video.duration)) duration = video.duration;
-  video.currentTime = 0;
-  video.pause();
+  primeVideoFrame(video);
 });
 
-transitionVideo.addEventListener('loadedmetadata', () => {
-  transitionVideo.currentTime = 0;
-  transitionVideo.pause();
-  if (video.readyState >= 1) video.currentTime = 0;
-});
+if (transitionVideo.readyState >= 2) {
+  primeVideoFrame(transitionVideo);
+} else {
+  transitionVideo.addEventListener('loadeddata', () => primeVideoFrame(transitionVideo), {once:true});
+}
 
 function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
 
@@ -632,6 +640,12 @@ function animateLogoTransition(){
   transitionVideo.style.setProperty('--transition-video-scale-x', videoScaleX.toFixed(3));
   transitionVideo.style.setProperty('--transition-video-scale-y', videoScaleY.toFixed(3));
   transitionVideo.style.setProperty('--transition-video-radius', `${Math.max(0, 6 - (6 * videoGrow)).toFixed(2)}px`);
+  if (transitionVideo.readyState >= 2) {
+    transitionVideo.pause();
+    if (Math.abs(transitionVideo.currentTime - FIRST_FRAME_TIME) > .001) {
+      transitionVideo.currentTime = FIRST_FRAME_TIME;
+    }
+  }
   if (progress >= .985 && transitionVideo.readyState >= 2 && video.readyState >= 2) {
     video.currentTime = transitionVideo.currentTime;
   }
@@ -650,7 +664,7 @@ function updateStory(){
   const passed = clamp(-rect.top, 0, scrollable);
   const progress = scrollable > 0 ? passed / scrollable : 0;
 
-  const targetTime = progress * Math.max(0.01, duration - 0.04);
+  const targetTime = FIRST_FRAME_TIME + progress * Math.max(0, duration - FIRST_FRAME_TIME - 0.04);
 
   if (video.readyState >= 2 && Math.abs(video.currentTime - targetTime) > 0.025) {
     try { video.currentTime = targetTime; } catch(e) {}
