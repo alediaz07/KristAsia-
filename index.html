@@ -426,7 +426,7 @@ footer nav{align-items:center;flex-wrap:wrap}
           <img class="logo-half-asia logo-half-right" src="kristasia-logo.png" alt="" />
           <img class="logo-half-center logo-half-right" src="kristasia-logo.png" alt="" />
         </div>
-        <video class="logo-transition-video" preload="auto" muted playsinline poster="poster.jpg" src="kristasia-scroll.mp4" aria-hidden="true"></video>
+        <video class="logo-transition-video" preload="auto" muted playsinline src="kristasia-scroll.mp4" aria-hidden="true"></video>
       </div>
     </div>
   </section>
@@ -584,7 +584,14 @@ let scrollRaf = null;
 
 video.addEventListener('loadedmetadata', () => {
   if (Number.isFinite(video.duration)) duration = video.duration;
+  video.currentTime = 0;
   video.pause();
+});
+
+transitionVideo.addEventListener('loadedmetadata', () => {
+  transitionVideo.currentTime = 0;
+  transitionVideo.pause();
+  if (video.readyState >= 1) video.currentTime = 0;
 });
 
 function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
@@ -625,6 +632,9 @@ function animateLogoTransition(){
   transitionVideo.style.setProperty('--transition-video-scale-x', videoScaleX.toFixed(3));
   transitionVideo.style.setProperty('--transition-video-scale-y', videoScaleY.toFixed(3));
   transitionVideo.style.setProperty('--transition-video-radius', `${Math.max(0, 6 - (6 * videoGrow)).toFixed(2)}px`);
+  if (progress >= .985 && transitionVideo.readyState >= 2 && video.readyState >= 2) {
+    video.currentTime = transitionVideo.currentTime;
+  }
   header.style.setProperty('--logo-transition-progress', progress.toFixed(3));
   header.dataset.scene = progress > .72 ? 'dark' : 'light';
   logoTransitionRaf = null;
