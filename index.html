@@ -105,7 +105,7 @@ nav a:hover{color:var(--terracotta)}
 @keyframes header-fade{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 
 .logo-transition{
-  height:280vh;
+  height:200vh;
   position:relative;
   background:transparent;
   overflow:visible;
@@ -346,7 +346,7 @@ footer nav{align-items:center;flex-wrap:wrap}
   .hero-actions{justify-items:center}
   .hero-aside{margin-top:48px;max-width:none}
   .hero-aside:before{height:42px;margin-bottom:12px}
-  .logo-transition{height:240vh}
+  .logo-transition{height:200vh}
   .logo-transition-mark{width:clamp(200px,62vw,280px)}
   .logo-transition-stage{height:100svh}
   .scroll-story{height:340vh}
@@ -577,6 +577,7 @@ const logoLeft = [...document.querySelectorAll('.logo-half-left')];
 const logoRight = [...document.querySelectorAll('.logo-half-right')];
 const FIRST_FRAME_TIME = 0.01;
 const TRANSITION_PORTION = 0.18;
+const VIDEO_START = 0.18;
 
 const story = document.querySelector('.scroll-story');
 const video = document.getElementById('scrollVideo');
@@ -632,12 +633,12 @@ function updateExperience(){
   const transitionProgress = getTransitionProgress();
   const storyProgress = getStoryProgress();
   const reduced = reduceMotion.matches;
-  const logoIn = smoothstep(clamp(transitionProgress / .18, 0, 1));
-  const split = reduced ? 0 : smoothstep(clamp((transitionProgress - .14) / .34, 0, 1));
+  const logoIn = smoothstep(clamp(transitionProgress / .08, 0, 1));
+  const split = reduced ? 0 : smoothstep(clamp((transitionProgress - .10) / .28, 0, 1));
   const videoIn = reduced
-    ? smoothstep(clamp((transitionProgress - .18) / .42, 0, 1))
-    : smoothstep(clamp((transitionProgress - .22) / .24, 0, 1));
-  const videoGrow = reduced ? 1 : smoothstep(clamp((transitionProgress - .22) / .7, 0, 1));
+    ? smoothstep(clamp((transitionProgress - VIDEO_START) / .14, 0, 1))
+    : smoothstep(clamp((transitionProgress - VIDEO_START) / .14, 0, 1));
+  const videoGrow = reduced ? 1 : smoothstep(clamp((transitionProgress - VIDEO_START) / .72, 0, 1));
   const logoOut = reduced ? videoIn : smoothstep(clamp((transitionProgress - .64) / .28, 0, 1));
   const halfOffset = 28 * split;
   const videoScaleX = .12 + (.88 * videoGrow);
@@ -656,11 +657,12 @@ function updateExperience(){
   video.style.setProperty('--experience-video-scale-y', transitionProgress >= 1 ? '1' : videoScaleY.toFixed(3));
   video.style.setProperty('--experience-video-radius', `${Math.max(0, 6 - (6 * videoGrow)).toFixed(2)}px`);
   const storyStartTime = duration * TRANSITION_PORTION;
+  const videoScrubProgress = clamp((transitionProgress - VIDEO_START) / (1 - VIDEO_START), 0, 1);
   const targetTime = transitionProgress < 1
-    ? FIRST_FRAME_TIME + smoothstep(clamp((transitionProgress - .28) / .72, 0, 1)) * Math.max(0, storyStartTime - FIRST_FRAME_TIME)
+    ? FIRST_FRAME_TIME + videoScrubProgress * Math.max(0, storyStartTime - FIRST_FRAME_TIME)
     : storyStartTime + storyProgress * Math.max(0, duration - storyStartTime - 0.04);
 
-  if (video.readyState >= 2 && Math.abs(video.currentTime - targetTime) > 0.025) {
+  if (video.readyState >= 2 && Math.abs(video.currentTime - targetTime) > 0.008) {
     try { video.currentTime = targetTime; } catch(e) {}
   }
 
