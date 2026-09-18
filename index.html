@@ -197,7 +197,7 @@ nav a:hover{color:var(--terracotta)}
   min-height:100svh;
   display:block;
   object-fit:cover;
-  object-position:center center;
+  object-position:60% center;
   opacity:var(--experience-video-opacity,0);
   transform:translate(-50%,-50%) scale(var(--experience-video-scale-x,.12),var(--experience-video-scale-y,.22));
   transform-origin:center;
@@ -206,7 +206,7 @@ nav a:hover{color:var(--terracotta)}
   will-change:transform,opacity;
 }
 .scroll-story{
-  height:400vh;
+  height:440vh;
   margin-top:-100vh;
   margin-top:-100svh;
   margin-top:-100dvh;
@@ -220,7 +220,7 @@ nav a:hover{color:var(--terracotta)}
 }
 .video-wrap{position:absolute;inset:0;background:#000}
 .video-wrap video{
-  width:100%; height:100%; object-fit:cover; object-position:center center;
+  width:100%; height:100%; object-fit:cover; object-position:60% center;
   display:block;
 }
 .video-wrap::after{
@@ -263,19 +263,7 @@ nav a:hover{color:var(--terracotta)}
   margin:0 0 12px;
 }
 .story-step p{margin:0;font-size:clamp(14px,1.4vw,20px);letter-spacing:.03em}
-.s1{left:7vw;top:24vh}
-.s2{right:7vw;top:26vh;text-align:right}
-.s3{left:7vw;bottom:18vh}
-.words{
-  position:absolute;right:7vw;bottom:14vh;
-  display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end;
-}
-.words span{
-  color:#fff;border:1px solid rgba(255,255,255,.45);
-  border-radius:999px;padding:10px 14px;
-  opacity:0;transform:translateY(10px);transition:.2s ease;
-}
-.words span.active{opacity:1;transform:none}
+.s1,.s2,.s3,.s4{left:7vw;top:22vh;text-align:left}
 
 .logo-reveal{
   min-height:min(78svh,760px);
@@ -416,7 +404,7 @@ footer nav{align-items:center;flex-wrap:wrap}
   .logo-transition{height:280vh;height:280svh}
   .logo-transition-mark{width:80vw}
   .logo-transition-stage{height:100svh}
-  .scroll-story{height:340vh}
+  .scroll-story{height:400vh}
   .logo-reveal{min-height:68svh;padding:64px 24px}
   .scene-services,.scene-lashes,.scene-facial,.scene-wellness,.scene-method,.scene-instagram{margin-top:-5svh;padding-top:118px}
   .scene-services:before{left:-78vw;width:190vw;height:118svh}
@@ -426,10 +414,10 @@ footer nav{align-items:center;flex-wrap:wrap}
   .scene-method:before{left:-68vw;width:196vw;height:122svh}
   .scene-instagram:before{left:-80vw;width:184vw;height:116svh}
   .scene-lashes .media-frame{border-radius:44% 10% 38% 8% / 10% 34% 12% 38%}
-  .video-wrap video{object-position:50% 50%}
-  .story-step{left:18px!important;right:18px!important;top:auto!important;bottom:12vh!important;text-align:left!important;max-width:none}
+  #scrollVideo,.video-wrap video{object-position:66% 50%}
+  #scrollVideo{object-position:center center}
+  .story-step{left:18px!important;right:18px!important;top:16svh!important;bottom:auto!important;text-align:left!important;max-width:66vw}
   .story-step h2{font-size:clamp(40px,12vw,64px)}
-  .words{left:18px;right:18px;bottom:8vh;justify-content:flex-start}
   .services{grid-template-columns:1fr}
   .card{min-height:330px}
   .method-grid{grid-template-columns:1fr 1fr}
@@ -441,6 +429,8 @@ footer nav{align-items:center;flex-wrap:wrap}
 @media (min-width:801px) and (max-width:1100px){
   .hero h1{font-size:clamp(68px,9vw,118px);width:min(76vw,720px)}
   .hero{padding-inline:48px}
+  #scrollVideo,.video-wrap video{object-position:62% center}
+  .story-step{max-width:42vw}
 }
 @media (min-width:801px) and (max-height:760px){
   .hero{padding-top:112px;padding-bottom:40px}
@@ -456,7 +446,7 @@ footer nav{align-items:center;flex-wrap:wrap}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .story-step,.words span,.reveal-media,.statement-copy,.mobile-nav,.hero{transition:none}
+  .story-step,.reveal-media,.statement-copy,.mobile-nav,.hero{transition:none}
   .hero-inner{transform:none}
   header,.kicker,.hero h1 span,.hero p,.hero-actions,.hero-aside{animation:none;opacity:1;transform:none}
   .hero-aside:before{animation:none}
@@ -505,7 +495,7 @@ footer nav{align-items:center;flex-wrap:wrap}
 
   <div class="video-experience-stage">
     <div class="video-experience-sticky">
-      <video id="scrollVideo" preload="auto" muted playsinline src="kristasia-scroll-scrub.mp4" aria-label="Video de experiencia KristAsia"></video>
+      <video id="scrollVideo" preload="auto" muted playsinline src="kristasia-wellness-scroll.mp4" data-desktop-src="kristasia-wellness-scroll.mp4" data-mobile-src="kristasia-wellness-scroll-mobile.mp4" aria-label="Video de experiencia KristAsia"></video>
     </div>
 
     <section class="logo-transition" id="logo-transition" aria-label="Transición visual KristAsia">
@@ -521,16 +511,14 @@ footer nav{align-items:center;flex-wrap:wrap}
       </div>
     </section>
 
-    <section class="scroll-story" id="story" aria-label="Experiencia visual de lashes">
+    <section class="scroll-story" id="story" aria-label="Experiencia visual de belleza y bienestar">
     <div class="sticky">
       <div class="story-outro" aria-hidden="true"></div>
       <div class="story-copy">
-        <div class="story-step s1" data-start="0.02" data-end="0.20"><h2>Todo comienza<br>con una mirada.</h2></div>
-        <div class="story-step s2" data-start="0.20" data-end="0.42"><h2>Diseñadas<br>para ti.</h2><p>Forma · Curvatura · Volumen</p></div>
-        <div class="story-step s3" data-start="0.58" data-end="0.70"><h2>Cada mirada<br>es única.</h2></div>
-        <div class="words" aria-hidden="true">
-          <span data-start="0.76">Precisión</span><span data-start="0.82">Volumen</span><span data-start="0.88">Elegancia</span>
-        </div>
+        <div class="story-step s1" data-start="0.02" data-end="0.21"><h2>TU RITUAL</h2><p>Todo comienza contigo.</p></div>
+        <div class="story-step s2" data-start="0.22" data-end="0.46"><h2>TU PIEL</h2><p>Cuidado que se siente.</p></div>
+        <div class="story-step s3" data-start="0.47" data-end="0.71"><h2>TU PAUSA</h2><p>Baja el ritmo.</p></div>
+        <div class="story-step s4" data-start="0.72" data-end="0.95"><h2>TU MOMENTO</h2><p>Relájate. Renueva. Brilla.</p></div>
       </div>
     </div>
     </section>
@@ -653,14 +641,16 @@ const logoTransition = document.querySelector('.logo-transition');
 const logoLeft = [...document.querySelectorAll('.logo-half-left')];
 const logoRight = [...document.querySelectorAll('.logo-half-right')];
 const FIRST_FRAME_TIME = 0.01;
-const TRANSITION_PORTION = 0.18;
-const VIDEO_START = 0.12;
+const TRANSITION_PORTION = 0.10;
+const VIDEO_START = 0.16;
 
 const story = document.querySelector('.scroll-story');
 const video = document.getElementById('scrollVideo');
+const mobileScrollVideoMedia = typeof window.matchMedia === 'function'
+  ? window.matchMedia('(max-width: 600px)')
+  : null;
 const heroGeometry = document.querySelector('.hero-geometry');
 const steps = [...document.querySelectorAll('.story-step')];
-const words = [...document.querySelectorAll('.words span')];
 const storyOutro = document.querySelector('.story-outro');
 const sceneLayers = [...document.querySelectorAll('.scene')];
 const lashVideos = [...document.querySelectorAll('.lash-video')];
@@ -672,27 +662,91 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 let duration = 10;
 let experienceRaf = null;
+let currentVideoMode = null;
+let pendingVideoProgress = 0;
+let pendingSeekTime = FIRST_FRAME_TIME;
+let scrollVideoReady = false;
 
-function primeVideoFrame(targetVideo){
+function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
+
+function primeVideoFrame(targetVideo, relativeProgress = 0){
   if (!targetVideo) return;
   targetVideo.muted = true;
   targetVideo.playsInline = true;
   targetVideo.pause();
-  try { targetVideo.currentTime = FIRST_FRAME_TIME; } catch(e) {}
+  const targetTime = relativeProgress > 0 && Number.isFinite(targetVideo.duration)
+    ? targetVideo.duration * clamp(relativeProgress, 0, 1)
+    : FIRST_FRAME_TIME;
+  queueScrollVideoSeek(targetTime);
 }
 
-function primeScrollVideo(){
-  primeVideoFrame(video);
+function getScrollVideoMode(){
+  return mobileScrollVideoMedia && mobileScrollVideoMedia.matches ? 'mobile' : 'desktop';
 }
 
-video.addEventListener('loadedmetadata', () => {
+function queueScrollVideoSeek(targetTime){
+  pendingSeekTime = clamp(targetTime, FIRST_FRAME_TIME, Math.max(FIRST_FRAME_TIME, duration - .04));
+  if (!scrollVideoReady || video.readyState < 2) return;
+  if (Math.abs(video.currentTime - pendingSeekTime) <= .008) return;
+  try { video.currentTime = pendingSeekTime; } catch(e) {}
+}
+
+function setScrollVideoSource(preserveProgress = false, forcedMode){
+  const nextMode = forcedMode || getScrollVideoMode();
+  const nextSource = nextMode === 'mobile' ? video.dataset.mobileSrc : video.dataset.desktopSrc;
+  if (!nextSource || (nextMode === currentVideoMode && video.getAttribute('src') === nextSource)) return;
+  const currentDuration = Number.isFinite(video.duration) ? video.duration : duration;
+  pendingVideoProgress = preserveProgress && currentDuration > 0
+    ? clamp(video.currentTime / currentDuration, 0, 1)
+    : 0;
+  currentVideoMode = nextMode;
+  scrollVideoReady = false;
+  pendingSeekTime = FIRST_FRAME_TIME;
+  video.pause();
+  video.src = nextSource;
+  video.load();
+}
+
+function handleScrollVideoMetadata(){
   if (Number.isFinite(video.duration)) duration = video.duration;
-  primeScrollVideo();
-});
-if (video.readyState >= 2) primeScrollVideo();
-else video.addEventListener('loadeddata', primeScrollVideo, {once:true});
+  primeVideoFrame(video, pendingVideoProgress);
+  pendingVideoProgress = 0;
+  onScroll();
+}
+function flushScrollVideoSeek(){
+  scrollVideoReady = video.readyState >= 2;
+  if (!scrollVideoReady) return;
+  video.pause();
+  queueScrollVideoSeek(pendingSeekTime);
+  onScroll();
+}
 
-function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
+function initializeResponsiveScrollVideo(){
+  if (!video) return;
+  currentVideoMode = video.getAttribute('src') === video.dataset.mobileSrc ? 'mobile' : 'desktop';
+  scrollVideoReady = video.readyState >= 2;
+  video.addEventListener('loadedmetadata', handleScrollVideoMetadata);
+  video.addEventListener('loadeddata', flushScrollVideoSeek);
+  video.addEventListener('canplay', flushScrollVideoSeek);
+  video.addEventListener('error', () => {
+    if (currentVideoMode !== 'desktop') setScrollVideoSource(false, 'desktop');
+  });
+  if (video.readyState >= 1) handleScrollVideoMetadata();
+  setScrollVideoSource();
+  if (mobileScrollVideoMedia) {
+    const handleScrollVideoBreakpointChange = () => setScrollVideoSource(true);
+    if (typeof mobileScrollVideoMedia.addEventListener === 'function') {
+      mobileScrollVideoMedia.addEventListener('change', handleScrollVideoBreakpointChange);
+    } else if (typeof mobileScrollVideoMedia.addListener === 'function') {
+      mobileScrollVideoMedia.addListener(handleScrollVideoBreakpointChange);
+    }
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeResponsiveScrollVideo, {once:true});
+} else {
+  initializeResponsiveScrollVideo();
+}
 
 function smoothstep(value){ return value * value * (3 - 2 * value); }
 
@@ -774,9 +828,7 @@ function updateExperience(){
     ? FIRST_FRAME_TIME + videoProgress * Math.max(0, storyStartTime - FIRST_FRAME_TIME)
     : storyStartTime + storyProgress * Math.max(0, duration - storyStartTime - 0.04);
 
-  if (video.readyState >= 2 && Math.abs(video.currentTime - targetTime) > 0.008) {
-    try { video.currentTime = targetTime; } catch(e) {}
-  }
+  queueScrollVideoSeek(targetTime);
 
   steps.forEach(el => {
     const start = parseFloat(el.dataset.start);
@@ -784,13 +836,8 @@ function updateExperience(){
     el.classList.toggle('active', storyProgress >= start && storyProgress <= end);
   });
 
-  words.forEach(el => {
-    const start = parseFloat(el.dataset.start);
-    el.classList.toggle('active', storyProgress >= start && storyProgress <= 0.93);
-  });
-
   if (storyOutro) {
-    const outroProgress = smoothstep(clamp((storyProgress - .78) / .22, 0, 1));
+    const outroProgress = smoothstep(clamp((storyProgress - .92) / .08, 0, 1));
     storyOutro.style.setProperty('--story-outro-opacity', outroProgress.toFixed(3));
     storyOutro.style.setProperty('--story-outro-shape-opacity', outroProgress.toFixed(3));
     storyOutro.style.setProperty('--story-outro-shape-scale', (.36 + (.64 * outroProgress)).toFixed(3));
