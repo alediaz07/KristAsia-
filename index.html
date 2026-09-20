@@ -283,18 +283,13 @@ nav a:hover{color:var(--terracotta)}
 .scene-lashes:before{right:-54vw;top:-66svh;width:142vw;height:136svh;border-radius:50%;background:#f3e7db;transform:translate3d(calc((1 - var(--scene-progress)) * 12vw),calc(var(--scene-progress) * 8svh),0)}
 .scene-lashes:after{right:-18vw;bottom:-50svh;width:88vw;height:88svh;border-radius:50%;background:rgba(127,130,97,.18);transform:translate3d(calc(var(--scene-progress) * -7vw),0,0)}
 .scene-lashes.alt{background:#c8b7a7}
-.scene-lashes .media-frame{position:relative;border-radius:58% 12% 46% 10% / 14% 42% 18% 48%;box-shadow:0 24px 70px rgba(42,41,38,.14)}
+.scene-lashes .media-frame{position:relative;border-radius:58% 12% 46% 10% / 14% 42% 18% 48%;box-shadow:none;filter:none}
 .scene-facial{margin-top:-7svh;padding-top:clamp(150px,17vw,230px);background:#e1ddd0}
 .scene-facial:before{right:-56vw;top:-46vw;width:118vw;height:118vw;border-radius:50%;background:#c5c7a5;transform:translate3d(calc((1 - var(--scene-progress)) * 16vw),calc(var(--scene-progress) * 8svh),0)}
 .scene-facial:after{left:-28vw;bottom:-62svh;width:112vw;height:112svh;border-radius:50%;background:rgba(255,250,242,.58);transform:translate3d(calc(var(--scene-progress) * 8vw),0,0)}
 .scene-wellness{margin-top:-7svh;padding-top:clamp(150px,17vw,230px);background:#c9b39e}
 .scene-wellness:before{right:-42vw;bottom:-66svh;width:132vw;height:128svh;border-radius:55% 0 0 0 / 58% 0 0 0;background:#8e9470;transform:translate3d(calc((1 - var(--scene-progress)) * 13vw),calc((1 - var(--scene-progress)) * 9svh),0) rotate(-7deg)}
 .scene-wellness:after{left:-18vw;top:-46svh;width:86vw;height:94svh;border-radius:50%;background:rgba(239,221,207,.52);transform:translate3d(calc(var(--scene-progress) * 6vw),0,0)}
-.scene-method{margin-top:-8svh;padding-top:clamp(160px,19vw,250px);background:#2a2926}
-.scene-method:before{left:-34vw;bottom:-92svh;width:168vw;height:146svh;border-radius:50% 50% 0 0 / 42% 42% 0 0;background:#4b513d;transform:translate3d(0,calc((1 - var(--scene-progress)) * 24svh),0) scale(var(--scene-method-scale,.74));transform-origin:center bottom}
-.scene-method:after{right:-20vw;top:-36svh;width:72vw;height:82svh;border-radius:50%;background:rgba(215,195,159,.12);transform:translate3d(calc(var(--scene-progress) * -8vw),0,0)}
-.scene-instagram{margin-top:-7svh;padding-top:clamp(150px,17vw,230px);background:#e6d6c9}
-.scene-instagram:before{left:-44vw;top:-62svh;width:140vw;height:126svh;border-radius:50%;background:#f6f0e6;transform:translate3d(calc(var(--scene-progress) * 10vw),calc((1 - var(--scene-progress)) * 8svh),0)}
 .scene-booking{margin-top:-7svh;isolation:isolate;overflow:hidden}
 .scene-booking:before{left:-30vw;bottom:-72svh;width:160vw;height:132svh;border-radius:50% 50% 0 0 / 44% 44% 0 0;background:#707753;transform:translate3d(0,calc((1 - var(--scene-progress)) * 18svh),0)}
 
@@ -338,18 +333,6 @@ nav a:hover{color:var(--terracotta)}
 .calm{background:#d9d7c2}
 .service-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 50px;margin-top:44px;max-width:900px}
 .service-list div{border-top:1px solid rgba(42,41,38,.2);padding:18px 0;font-family:Georgia,serif;font-size:clamp(22px,2.5vw,34px)}
-.instagram{padding-bottom:120px}
-.instagram-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:46px 0 28px}
-.instagram-grid .placeholder{aspect-ratio:1}
-.instagram-link{color:var(--terracotta);font-weight:700;letter-spacing:.06em}
-.method{
-  background:var(--ink);color:var(--white);
-}
-.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:50px}
-.method-item{border-top:1px solid rgba(255,255,255,.25);padding-top:20px}
-.method-item strong{font-size:12px;letter-spacing:.16em;color:#d7c39f}
-.method-item h3{font-family:Georgia,serif;font-size:32px;font-weight:500;margin:18px 0 10px}
-.method-item p{line-height:1.55;color:#e5dfd4}
 .booking{
   min-height:86svh;
   display:grid;place-items:center;
@@ -394,13 +377,11 @@ footer nav{align-items:center;flex-wrap:wrap}
   .logo-transition-stage{height:100svh}
   .scroll-story{height:400vh}
   .logo-reveal{min-height:68svh;padding:64px 24px}
-  .scene-services,.scene-lashes,.scene-facial,.scene-wellness,.scene-method,.scene-instagram{margin-top:-5svh;padding-top:118px}
+  .scene-services,.scene-lashes,.scene-facial,.scene-wellness{margin-top:-5svh;padding-top:118px}
   .scene-services:before{left:-78vw;width:190vw;height:118svh}
   .scene-lashes:before{right:-86vw;width:190vw;height:126svh}
   .scene-facial:before{right:-76vw;width:168vw;height:168vw}
   .scene-wellness:before{right:-78vw;width:180vw;height:116svh}
-  .scene-method:before{left:-68vw;width:196vw;height:122svh}
-  .scene-instagram:before{left:-80vw;width:184vw;height:116svh}
   .scene-lashes .media-frame{border-radius:44% 10% 38% 8% / 10% 34% 12% 38%}
   #scrollVideo,.video-wrap video{object-position:66% 50%}
   #scrollVideo{object-position:center center}
@@ -409,11 +390,9 @@ footer nav{align-items:center;flex-wrap:wrap}
   .story-step h2{font-size:clamp(40px,12vw,64px)}
   .services{grid-template-columns:1fr}
   .card{min-height:330px}
-  .method-grid{grid-template-columns:1fr 1fr}
   .media-intro{display:block}
   .media-intro p{margin-top:20px}
   .service-list{grid-template-columns:1fr}
-  .instagram-grid{gap:8px}
 }
 @media (min-width:801px) and (max-width:1100px){
   .hero h1{font-size:clamp(68px,9vw,118px);width:min(76vw,720px)}
@@ -428,7 +407,6 @@ footer nav{align-items:center;flex-wrap:wrap}
   .hero-aside{margin-top:34px}
 }
 @media(max-width:520px){
-  .method-grid{grid-template-columns:1fr}
   .media-section{padding:76px 18px}
   .placeholder-grid{gap:8px}
   footer .footer-brand{align-items:flex-start;flex-direction:column}
@@ -451,20 +429,17 @@ footer nav{align-items:center;flex-wrap:wrap}
 .world-shape-b{width:64vw;height:86svh;left:-40vw;bottom:-34svh;border-radius:52% 48% 0 0 / 42% 38% 0 0;background:rgba(255,250,242,.67)}
 .world-shape-c{width:36vw;height:36vw;right:9vw;bottom:8svh;border-radius:50%;background:rgba(127,130,97,.18)}
 .world-stage{position:sticky;top:0;height:100svh;margin-bottom:-100svh;z-index:2;overflow:hidden}
-.world-media-frame{position:absolute;right:clamp(24px,7vw,120px);top:50%;width:min(46vw,680px);aspect-ratio:4/5;transform:translateY(-50%) scale(.99);overflow:hidden;border-radius:48% 10% 42% 8% / 12% 38% 16% 42%;background:#ded7ca;box-shadow:0 28px 80px rgba(42,41,38,.16);opacity:0;visibility:hidden;will-change:opacity,transform}
-.world-video,.world-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1);will-change:opacity,transform}
+.world-media-frame{position:absolute;right:clamp(24px,7vw,120px);top:54%;width:min(38vw,560px);aspect-ratio:4/5;transform:translateY(-50%) scale(.99);overflow:hidden;border:0;outline:0;border-radius:48% 10% 42% 8% / 12% 38% 16% 42%;background:#ded7ca;box-shadow:none;filter:none;opacity:0;visibility:hidden;will-change:opacity,transform}.world-media-frame.is-inactive{pointer-events:none}
+.world-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1);will-change:opacity,transform}
 .world-stage-caption{display:none}
 .world-chapters{position:relative;z-index:3}
 .world-chapter{min-height:112svh;display:flex;align-items:center;padding:clamp(110px,13vw,190px) clamp(20px,7vw,120px);padding-right:52vw;position:relative}
 .world-copy{max-width:640px}.world-overline{font:600 11px/1.4 "Manrope",sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--terracotta);margin:0 0 22px}.world-copy h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(52px,6.8vw,104px);font-weight:500;line-height:.91;letter-spacing:-.035em;margin:0 0 24px}.world-copy h2 .line{display:block;clip-path:inset(0 0 0 0)}.world-copy h2 .line > span{display:block}.world-copy .lead{max-width:480px;margin:0;font:400 clamp(16px,1.45vw,21px)/1.55 "Manrope",sans-serif;color:#59564f}
-.world-chapter-lashes{min-height:125svh}.world-chapter-facial{min-height:190svh;padding-right:52vw}.wellness-chapter{min-height:142svh;padding-right:clamp(20px,7vw,120px)}.wellness-layout{width:100%;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(48px,9vw,160px);align-items:center}.wellness-chapter .world-copy{max-width:580px}.wellness-services{display:grid;align-content:center}.wellness-service{display:grid;grid-template-columns:58px 1fr;gap:20px;align-items:baseline;border-top:1px solid rgba(42,41,38,.28);padding:clamp(22px,3vw,42px) 0}.wellness-service:last-child{border-bottom:1px solid rgba(42,41,38,.28)}.wellness-service span{font:600 11px/1 "Manrope",sans-serif;letter-spacing:.14em;color:var(--terracotta)}.wellness-service h3{margin:0;font:500 clamp(30px,4.2vw,66px)/.91 Georgia,serif;letter-spacing:-.035em}.wellness-service:first-child h3{font-size:clamp(42px,5.2vw,82px)}
-.ritual-index{font:600 12px/1 "Manrope",sans-serif;letter-spacing:.16em;margin:34px 0 0;color:rgba(42,41,38,.58)}
-.editorial-list{margin:42px 0 0;max-width:620px;display:grid;grid-template-columns:1fr 1fr;column-gap:36px}.editorial-list div{border-top:1px solid rgba(42,41,38,.24);padding:15px 0;font:500 clamp(18px,1.9vw,30px)/1.15 Georgia,serif}.editorial-list span{display:inline-block;width:28px;font:600 10px/1 "Manrope",sans-serif;letter-spacing:.08em;color:var(--terracotta);vertical-align:middle}
-.method-chapter{color:var(--white);min-height:175svh;padding-right:clamp(20px,7vw,120px);align-items:flex-start}.method-intro{position:sticky;top:18svh;max-width:720px}.method-chapter .world-overline{color:#d7c39f}.method-chapter .lead{color:#e5dfd4}.method-sequence{position:absolute;right:clamp(24px,7vw,120px);top:50%;width:min(46vw,680px);aspect-ratio:4/5;transform:translateY(-50%);overflow:hidden;border-radius:48% 10% 42% 8% / 12% 38% 16% 42%;background:rgba(255,255,255,.06);box-shadow:0 28px 80px rgba(0,0,0,.14)}.method-item{position:absolute;inset:0;border-top:1px solid rgba(255,255,255,.28);padding:clamp(42px,7vw,88px);opacity:0;transform:translateY(20px)}.method-item:first-child{opacity:1;transform:none}.method-item strong{font:600 12px/1 "Manrope",sans-serif;letter-spacing:.16em;color:#d7c39f}.method-item h3{font:500 clamp(38px,4vw,64px)/1 Georgia,serif;margin:25px 0 14px}.method-item p{max-width:350px;margin:0;color:#e5dfd4;line-height:1.55}.method-progress{position:absolute;left:30px;top:20%;width:1px;height:60%;background:rgba(255,255,255,.25)}.method-progress:after{content:"";display:block;width:3px;height:25%;margin-left:-1px;background:#d7c39f;transform-origin:top;transform:scaleY(var(--method-progress,0));will-change:transform}
-.social-chapter{min-height:105svh;padding-right:clamp(20px,7vw,120px)}.social-chapter .world-copy{max-width:100%}.film-strip{display:grid;grid-template-columns:1.1fr .8fr 1.15fr;gap:14px;margin-top:46px;align-items:end}.film-placeholder{min-height:250px;display:flex;align-items:flex-end;padding:22px;border:1px solid rgba(42,41,38,.16);background:linear-gradient(145deg,rgba(255,250,242,.78),rgba(232,223,210,.6));font:600 10px/1.4 "Manrope",sans-serif;letter-spacing:.12em;text-transform:uppercase}.film-placeholder:nth-child(2){min-height:330px;transform:translateY(-22px)}.film-placeholder:nth-child(3){min-height:280px}.instagram-link{display:inline-block;margin-top:28px}
+.world-chapter-lashes{min-height:125svh}.world-chapter-facial,.wellness-chapter{min-height:auto;padding:clamp(110px,12vw,176px) clamp(20px,7vw,120px)}.facial-layout{width:100%}.facial-intro{position:relative;min-height:100svh;display:flex;align-items:center;padding-right:52vw}.facial-layout .facial-services{margin-top:clamp(24px,4vw,64px)}.wellness-layout{width:100%;display:grid;grid-template-columns:minmax(240px,.68fr) minmax(0,1.32fr);gap:clamp(42px,7vw,112px);align-items:start}.world-chapter-facial .world-copy,.wellness-chapter .world-copy{max-width:500px}.service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.wellness-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.service-card{min-height:232px;display:flex;flex-direction:column;padding:clamp(20px,2vw,30px);border:1px solid rgba(42,41,38,.14);border-radius:28px 8px 24px 8px;background:rgba(255,250,242,.62);box-shadow:0 12px 30px rgba(42,41,38,.055);transition:transform .35s ease,background-color .35s ease,border-color .35s ease}.wellness-card{background:rgba(245,241,225,.52);border-color:rgba(75,81,61,.2)}.service-card:hover{transform:translateY(-4px);background:rgba(255,250,242,.9);border-color:rgba(190,115,85,.42)}.wellness-card:hover{background:rgba(244,241,223,.84);border-color:rgba(75,81,61,.4)}.service-icon{width:28px;height:28px;display:grid;place-items:center;color:var(--terracotta);margin-bottom:22px}.wellness-card .service-icon{color:var(--olive)}.service-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}.service-index{font:600 10px/1 "Manrope",sans-serif;letter-spacing:.14em;color:rgba(42,41,38,.58)}.service-card h3{margin:15px 0 10px;font:500 clamp(19px,1.6vw,28px)/.98 Georgia,serif;letter-spacing:-.025em}.service-card p{margin:0;font:400 13px/1.52 "Manrope",sans-serif;color:#5c584f}.service-card a{margin-top:auto;padding-top:20px;color:var(--terracotta);font:600 10px/1 "Manrope",sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}.wellness-card a{color:var(--olive)}.service-card a:focus-visible{outline:2px solid currentColor;outline-offset:4px}.facial-carousel{position:absolute;right:0;top:54%;z-index:4;width:min(38vw,560px);transform:translateY(-50%);opacity:0;visibility:hidden;overflow:visible;pointer-events:none;will-change:opacity,transform}.facial-carousel.is-active{pointer-events:auto}.facial-carousel-track{display:flex;gap:clamp(12px,1.1vw,16px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;padding:2px 0 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.facial-carousel-track::-webkit-scrollbar{display:none}.facial-carousel-card{flex:0 0 82%;margin:0;aspect-ratio:4/5;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always;border:0;outline:0;border-radius:48% 10% 42% 8% / 12% 38% 16% 42%;background:#ded7ca;box-shadow:none;filter:none}.facial-carousel-card img{display:block;width:100%;height:100%;object-fit:cover}.facial-carousel-card:first-child img{object-position:center}.facial-carousel-card:last-child img{object-position:center}.facial-carousel-index{margin:14px 0 0;text-align:right;font:600 10px/1 "Manrope",sans-serif;letter-spacing:.14em;color:rgba(42,41,38,.62)}.facial-carousel-index span{color:var(--terracotta)}.ritual-index{font:600 12px/1 "Manrope",sans-serif;letter-spacing:.16em;margin:34px 0 0;color:rgba(42,41,38,.58)}
 .booking-world{min-height:100svh;display:grid;place-items:center;text-align:center;padding:120px 24px 80px;position:relative;z-index:2;color:#fff;background:#4b513d}.booking-world:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,#707753 0 38%,transparent 39%);opacity:.8;pointer-events:none}.booking-world > div{position:relative}.booking-world h2{font:500 clamp(56px,8vw,118px)/.92 Georgia,serif;margin:0 0 26px}.booking-world p{margin:0 auto 28px;font-size:20px;color:#f5f0e7}.booking-world .btn-primary{background:#fff;color:var(--olive);font-size:18px;padding:16px 28px}.booking-world .location{font-size:14px;line-height:1.6;margin-top:28px;color:#e4ddcf}
-@media(max-width:800px){.experience-world{overflow:hidden}.world-background,.world-shapes{position:absolute;height:100%}.world-stage{height:100svh}.world-media-frame{top:55svh;right:18px;left:18px;width:auto;height:36svh;aspect-ratio:auto;border-radius:38% 9% 32% 8% / 12% 28% 12% 28%}.world-stage-caption{display:none}.world-shape-a{width:130vw;height:130vw;right:-58vw;top:8svh}.world-shape-b{width:120vw;height:76svh;left:-70vw;bottom:12svh}.world-shape-c{width:62vw;height:62vw;right:-24vw;bottom:9svh}.world-chapter{min-height:104svh;align-items:flex-end;padding:58svh 20px 60px}.world-chapter-lashes{min-height:108svh;align-items:flex-start;padding:130px 20px 52svh}.world-chapter-facial{min-height:185svh;padding:110px 20px 70px}.wellness-chapter{min-height:auto;padding:110px 20px 80px}.wellness-layout{grid-template-columns:1fr;gap:48px}.wellness-chapter .world-copy{max-width:100%}.wellness-service{grid-template-columns:36px 1fr;gap:12px;padding:24px 0}.wellness-service h3{font-size:clamp(30px,10vw,54px)}.wellness-service:first-child h3{font-size:clamp(42px,13vw,66px)}.world-copy h2{font-size:clamp(48px,14vw,74px)}.world-copy .lead{font-size:15px}.editorial-list{grid-template-columns:1fr;margin-top:28px}.editorial-list div{font-size:21px;padding:10px 0}.method-chapter{min-height:175svh;padding:110px 20px 60px;display:block}.method-intro{position:relative;top:auto}.method-sequence{left:20px;right:20px;top:76svh;width:auto;min-height:0;aspect-ratio:4/5;transform:none}.social-chapter{padding:58svh 20px 60px;min-height:115svh}.film-strip{margin-top:30px;gap:8px}.film-placeholder{min-height:135px;padding:11px;font-size:8px}.film-placeholder:nth-child(2){min-height:190px;transform:translateY(-10px)}.film-placeholder:nth-child(3){min-height:155px}.booking-world{min-height:88svh}.booking-world h2{font-size:clamp(56px,16vw,80px)}}
-@media(prefers-reduced-motion:reduce){.world-background,.world-shapes,.world-stage{position:absolute}.world-video{opacity:0!important;transform:none!important}.world-media-frame{transform:translateY(-50%)!important;opacity:1!important;visibility:visible!important}.world-video-one{opacity:1!important}.world-chapter{min-height:auto;padding-top:80px}.method-chapter{min-height:auto}.method-intro{position:relative;top:auto}.method-sequence{position:relative;left:auto;right:auto;top:auto;width:auto;min-height:0;margin-top:44px}.method-item{position:relative;opacity:1!important;transform:none!important;margin-top:30px}.method-progress{display:none}}
+@media(max-width:1100px) and (min-width:801px){.facial-layout,.wellness-layout{grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr);gap:42px}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-card{min-height:220px}}
+@media(max-width:800px){.experience-world{overflow:hidden}.world-background,.world-shapes{position:absolute;height:100%}.world-stage{height:100svh}.world-media-frame{top:59svh;right:18px;left:18px;width:auto;height:30svh;aspect-ratio:auto;border-radius:38% 9% 32% 8% / 12% 28% 12% 28%}.world-stage-caption{display:none}.world-shape-a{width:130vw;height:130vw;right:-58vw;top:8svh}.world-shape-b{width:120vw;height:76svh;left:-70vw;bottom:12svh}.world-shape-c{width:62vw;height:62vw;right:-24vw;bottom:9svh}.world-chapter{min-height:104svh;align-items:flex-end;padding:58svh 20px 60px}.world-chapter-lashes{min-height:108svh;align-items:flex-start;padding:130px 20px 52svh}.world-chapter-facial,.wellness-chapter{padding:96px 20px 72px}.facial-intro{min-height:auto;display:block;padding-right:0}.facial-carousel{position:relative;right:auto;top:auto;width:100%;margin:34px 0;transform:none;opacity:1;visibility:visible}.facial-carousel-track{gap:12px;padding-right:0}.facial-carousel-card{flex-basis:84%;border-radius:38% 9% 32% 8% / 12% 28% 12% 28%}.facial-carousel-index{margin-top:12px}.facial-layout,.wellness-layout{grid-template-columns:1fr;gap:38px}.world-chapter-facial .world-copy,.wellness-chapter .world-copy{max-width:100%}.service-grid,.wellness-grid{grid-template-columns:1fr;gap:12px}.service-card{min-height:214px;padding:24px}.world-copy h2{font-size:clamp(48px,14vw,74px)}.world-copy .lead{font-size:15px}.booking-world{min-height:88svh}.booking-world h2{font-size:clamp(56px,16vw,80px)}}
+@media(prefers-reduced-motion:reduce){.world-background,.world-shapes,.world-stage{position:absolute}.world-video{opacity:0!important;transform:none!important}.world-media-frame{transform:translateY(-50%)!important;opacity:1!important;visibility:visible!important}.world-video-one{opacity:1!important}.world-chapter{min-height:auto;padding-top:80px}}
 </style>
 </head>
 <body>
@@ -476,7 +451,6 @@ footer nav{align-items:center;flex-wrap:wrap}
     <a href="#services">Servicios</a>
     <a href="#lashes">Lashes</a>
     <a href="#facial">Facial Studio</a>
-    <a href="#experience">Experiencia</a>
     <a href="#contact">Contacto</a>
   </nav>
   <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">☰</button>
@@ -484,7 +458,6 @@ footer nav{align-items:center;flex-wrap:wrap}
     <a href="#services">Servicios</a>
     <a href="#lashes">Lashes</a>
     <a href="#facial">Facial Studio</a>
-    <a href="#experience">Experiencia</a>
     <a href="#contact">Contacto</a>
   </div>
   <a class="cta" href="#booking">Reservar cita</a>
@@ -538,14 +511,12 @@ footer nav{align-items:center;flex-wrap:wrap}
   <section class="experience-world" id="services" aria-label="Experiencia KristAsia">
     <div class="world-background" aria-hidden="true"></div>
     <div class="world-shapes" aria-hidden="true"><div class="world-shape world-shape-a"></div><div class="world-shape world-shape-b"></div><div class="world-shape world-shape-c"></div></div>
-    <div class="world-stage" aria-hidden="true"><div class="world-media-frame"><video class="world-video world-video-one" preload="metadata" muted playsinline loop poster="poster.jpg" src="assets/media/kristasia-lashes-process.mp4"></video><video class="world-video world-video-two" preload="metadata" muted playsinline loop poster="poster.jpg" src="assets/media/kristasia-lashes-detail.mp4"></video><img class="world-image world-image-lashes-result" src="assets/media/kristasia-lashes-result.jpg" alt="" /><video class="world-video facial-treatment" preload="metadata" muted playsinline loop poster="poster.jpg" src="assets/media/kristasia-facial-treatment.mp4"></video><img class="world-image facial-phototherapy" src="assets/media/kristasia-facial-phototherapy.jpg" alt="" /><video class="world-video facial-result" preload="metadata" muted playsinline loop poster="poster.jpg" src="assets/media/kristasia-facial-result.mp4"></video><video class="world-video facial-result-secondary" preload="metadata" muted playsinline loop poster="poster.jpg" src="assets/media/kristasia-facial-result-secondary.mp4"></video></div></div>
+    <div class="world-stage" aria-hidden="true"><div class="world-media-frame"><video class="world-video world-video-one" preload="metadata" muted playsinline loop poster="poster.jpg" src="assets/media/kristasia-lashes-process.mp4"></video><video class="world-video world-video-two" preload="metadata" muted playsinline loop poster="poster.jpg" src="assets/media/kristasia-lashes-detail.mp4"></video></div></div>
     <div class="world-chapters">
       <section class="world-chapter world-chapter-lashes" id="lashes" aria-labelledby="lash-result-title"><div class="world-copy"><p class="world-overline">01 · Lashes</p><h2 id="lash-result-title"><span class="line"><span>Tu mirada,</span></span><span class="line"><span>elevada.</span></span></h2><p class="lead">Resultados diseñados para respetar la forma natural de tus ojos y realzar tu expresión.</p><p class="ritual-index">Lifting de pestañas</p></div></section>
       <section class="world-chapter world-chapter-lashes" aria-labelledby="lash-detail-title"><div class="world-copy"><p class="world-overline">Diseño KristAsia</p><h2 id="lash-detail-title"><span class="line"><span>Diseñado desde</span></span><span class="line"><span>cada ángulo.</span></span></h2><p class="lead">Curvatura, longitud y definición trabajadas para acompañar la forma natural de tu mirada.</p></div></section>
-      <section class="world-chapter world-chapter-facial" id="facial" aria-labelledby="facial-title"><div class="world-copy"><p class="world-overline">02 · Facial Studio</p><h2 id="facial-title"><span class="line"><span>Más allá de</span></span><span class="line"><span>tu mirada.</span></span></h2><p class="lead">Tratamientos pensados para limpiar, hidratar, renovar y cuidar tu piel.</p><div class="editorial-list"><div><span>01</span>Limpieza facial básica</div><div><span>02</span>Limpieza facial profunda</div><div><span>03</span>Hidratación facial</div><div><span>04</span>Reflexología facial</div><div><span>05</span>Drenaje linfático facial</div><div><span>06</span>Masajes faciales</div><div><span>07</span>Fototerapia</div><div><span>08</span>Alta frecuencia facial</div></div></div></section>
-      <section class="world-chapter wellness-chapter" aria-labelledby="wellness-title"><div class="wellness-layout"><div class="world-copy"><p class="world-overline">03 · Beauty &amp; Wellness</p><h2 id="wellness-title"><span class="line"><span>Relájate.</span></span><span class="line"><span>Renueva. Brilla.</span></span></h2><p class="lead">Un momento de pausa para reconectar contigo a través del cuidado y el bienestar.</p></div><div class="wellness-services"><article class="wellness-service"><span>01</span><h3>Masajes<br>relajantes</h3></article><article class="wellness-service"><span>02</span><h3>Exfoliación<br>corporal</h3></article><article class="wellness-service"><span>03</span><h3>Experiencias<br>de bienestar</h3></article></div></div></section>
-      <section class="world-chapter method-chapter" id="experience" aria-labelledby="experience-title"><div class="world-copy method-intro"><p class="world-overline">El método</p><h2 id="experience-title"><span class="line"><span>La experiencia</span></span><span class="line"><span>KristAsia.</span></span></h2><p class="lead">Cada paso acompaña tu experiencia con atención y precisión.</p></div><div class="method-sequence"><div class="method-progress" aria-hidden="true"></div><article class="method-item"><strong>01 — CONSULTA</strong><h3>Conocemos</h3><p>Conocemos tus necesidades y el resultado que buscas.</p></article><article class="method-item"><strong>02 — DISEÑO</strong><h3>Seleccionamos</h3><p>Seleccionamos el tratamiento o experiencia adecuada.</p></article><article class="method-item"><strong>03 — EXPERIENCIA</strong><h3>Realizamos</h3><p>Realizamos el servicio con atención y precisión.</p></article><article class="method-item"><strong>04 — CUIDADO</strong><h3>Acompañamos</h3><p>Te orientamos para mantener tus resultados.</p></article></div></section>
-      <section class="world-chapter social-chapter" aria-labelledby="instagram-title"><div class="world-copy"><p class="world-overline">Comunidad</p><h2 id="instagram-title"><span class="line"><span>Síguenos en</span></span><span class="line"><span>Instagram.</span></span></h2><div class="film-strip"><div class="film-placeholder">Lashes / detalle</div><div class="film-placeholder">Facial / ritual</div><div class="film-placeholder">Beauty / bienestar</div></div><a class="instagram-link" href="https://www.instagram.com/kristasia.beautycenter/" target="_blank" rel="noreferrer">@kristasia.beautycenter ↗</a></div></section>
+      <section class="world-chapter world-chapter-facial" id="facial" aria-labelledby="facial-title"><div class="facial-layout"><div class="facial-intro"><div class="world-copy"><p class="world-overline">02 · Facial Studio</p><h2 id="facial-title"><span class="line"><span>Más allá de</span></span><span class="line"><span>tu mirada.</span></span></h2><p class="lead">Tratamientos pensados para limpiar, hidratar, renovar y cuidar tu piel.</p></div><div class="facial-carousel" aria-label="Fotografías de resultados KristAsia"><div class="facial-carousel-track"><figure class="facial-carousel-card"><img src="assets/media/kristasia-lashes-result.jpg" alt="Resultado de lashes KristAsia" /></figure><figure class="facial-carousel-card"><img src="assets/media/kristasia-facial-phototherapy.jpg" alt="Fototerapia facial KristAsia" /></figure></div><p class="facial-carousel-index" aria-live="polite"><span>01</span> / 02</p></div></div><div class="service-grid facial-services"><article class="service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="9"/><path d="M16 7v18M7 16h18"/></svg></span><span class="service-index">01</span><h3>Limpieza facial básica</h3><p>Un primer paso de cuidado para refrescar y acompañar tu piel.</p><a href="#booking">Descubrir más</a></article><article class="service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 20c3-9 15-9 18 0"/><path d="M10 23c2-5 10-5 12 0"/><circle cx="16" cy="11" r="3"/></svg></span><span class="service-index">02</span><h3>Limpieza facial profunda</h3><p>Una limpieza dedicada para renovar la sensación de pureza y bienestar.</p><a href="#booking">Descubrir más</a></article><article class="service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 5c5 6 7 10 7 14a7 7 0 1 1-14 0c0-4 2-8 7-14Z"/></svg></span><span class="service-index">03</span><h3>Hidratación</h3><p>Un momento de cuidado pensado para devolver confort y suavidad.</p><a href="#booking">Descubrir más</a></article><article class="service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 20c2-8 14-8 16 0"/><path d="M11 16c1-3 3-5 5-5s4 2 5 5"/><path d="M12 24h8"/></svg></span><span class="service-index">04</span><h3>Reflexología</h3><p>Un ritual facial de ritmo pausado para conectar con tu momento de cuidado.</p><a href="#booking">Descubrir más</a></article><article class="service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 5v22M9 10c2 2 4 3 7 3s5-1 7-3M9 22c2-2 4-3 7-3s5 1 7 3"/></svg></span><span class="service-index">05</span><h3>Drenaje linfático facial</h3><p>Un cuidado facial de ritmo suave, diseñado para una experiencia de descanso.</p><a href="#booking">Descubrir más</a></article><article class="service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 18c4 0 5-7 10-7s6 7 10 7"/><path d="M6 23c4 0 5-5 10-5s6 5 10 5"/></svg></span><span class="service-index">06</span><h3>Masajes faciales</h3><p>Gestos de cuidado que invitan a detenerse y disfrutar el presente.</p><a href="#booking">Descubrir más</a></article><article class="service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 5v22M7 16h18M10 10l12 12M22 10 10 22"/></svg></span><span class="service-index">07</span><h3>Fototerapia</h3><p>Una sesión de luz integrada a un ritual facial de atención y precisión.</p><a href="#booking">Descubrir más</a></article><article class="service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 5c2 4 6 6 6 11a6 6 0 1 1-12 0c0-5 4-7 6-11Z"/><path d="M16 21v6"/></svg></span><span class="service-index">08</span><h3>Alta frecuencia</h3><p>Un complemento facial que aporta una capa adicional a tu rutina de cuidado.</p><a href="#booking">Descubrir más</a></article></div></div></section>
+      <section class="world-chapter wellness-chapter" aria-labelledby="wellness-title"><div class="wellness-layout"><div class="world-copy"><p class="world-overline">03 · Beauty &amp; Wellness</p><h2 id="wellness-title"><span class="line"><span>Relájate.</span></span><span class="line"><span>Renueva. Brilla.</span></span></h2><p class="lead">Un momento de pausa para reconectar contigo a través del cuidado y el bienestar.</p></div><div class="service-grid wellness-grid"><article class="service-card wellness-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 18c4 0 5-7 10-7s6 7 10 7"/><path d="M6 23c4 0 5-5 10-5s6 5 10 5"/></svg></span><span class="service-index">01</span><h3>Masajes relajantes</h3><p>Un momento de pausa pensado para reconectar contigo y bajar el ritmo.</p><a href="#booking">Descubrir más</a></article><article class="service-card wellness-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 20c3-9 13-9 16 0"/><path d="M10 24c2-5 10-5 12 0"/><path d="M16 7v5"/></svg></span><span class="service-index">02</span><h3>Exfoliación corporal</h3><p>Cuidado corporal diseñado para renovar la sensación de suavidad y bienestar.</p><a href="#booking">Descubrir más</a></article><article class="service-card wellness-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 6c5 4 8 8 8 13a8 8 0 0 1-16 0c0-5 3-9 8-13Z"/><path d="M12 19c1 1 2 2 4 2s3-1 4-2"/></svg></span><span class="service-index">03</span><h3>Experiencias de bienestar</h3><p>Una invitación a regalarte tiempo, cuidado y una pausa para ti.</p><a href="#booking">Descubrir más</a></article></div></div></section>
     </div>
   </section>
   <section class="booking-world" id="booking"><div><h2>Tu momento<br>comienza aquí.</h2><p>Reserva tu experiencia KristAsia.</p><a class="btn btn-primary" href="#">Reservar cita</a><div class="location">San Miguel, Desamparados,<br>San José, Costa Rica.</div></div></section>
@@ -557,7 +528,7 @@ footer nav{align-items:center;flex-wrap:wrap}
     <p>Facial Studio &amp; Lashes<br>San Miguel, Desamparados, San José</p>
   </div>
   <nav aria-label="Navegación del pie de página">
-    <a href="#services">Servicios</a><a href="#experience">Experiencia</a><a href="https://www.instagram.com/kristasia.beautycenter/" target="_blank" rel="noreferrer">Instagram</a>
+    <a href="#services">Servicios</a><a href="https://www.instagram.com/kristasia.beautycenter/" target="_blank" rel="noreferrer">Instagram</a>
   </nav>
   <p>© Beauty Center KristAsia</p>
 </footer>
@@ -581,7 +552,6 @@ const mobileScrollVideoMedia = typeof window.matchMedia === 'function'
   : null;
 const heroGeometry = document.querySelector('.hero-geometry');
 const steps = [...document.querySelectorAll('.story-step')];
-const methodChapter = document.querySelector('.method-chapter');
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNav = document.getElementById('mobileNav');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -759,9 +729,7 @@ function updateExperience(){
 
   header.style.setProperty('--logo-transition-progress', transitionProgress.toFixed(3));
   const openingStillVisible = story.getBoundingClientRect().bottom > 0;
-  const methodRect = methodChapter && methodChapter.getBoundingClientRect();
-  const methodIsVisible = methodRect && methodRect.top < window.innerHeight * .56 && methodRect.bottom > window.innerHeight * .25;
-  header.dataset.scene = openingStillVisible ? (transitionProgress > .72 ? 'dark' : 'light') : (methodIsVisible ? 'dark' : 'light');
+  header.dataset.scene = openingStillVisible && transitionProgress > .72 ? 'dark' : 'light';
   experienceRaf = null;
 }
 
@@ -820,22 +788,30 @@ function initExperienceWorld(){
   const frame = world.querySelector('.world-media-frame');
   const videoOne = world.querySelector('.world-video-one');
   const videoTwo = world.querySelector('.world-video-two');
-  const lashesResult = world.querySelector('.world-image-lashes-result');
-  const facialTreatment = world.querySelector('.facial-treatment');
-  const facialPhototherapy = world.querySelector('.facial-phototherapy');
-  const facialResult = world.querySelector('.facial-result');
-  const facialResultSecondary = world.querySelector('.facial-result-secondary');
-  const editorialVideos = [videoOne, videoTwo, facialTreatment, facialResult, facialResultSecondary];
+  const facialCarousel = world.querySelector('.facial-carousel');
+  const facialCarouselTrack = facialCarousel?.querySelector('.facial-carousel-track');
+  const facialCarouselIndex = facialCarousel?.querySelector('.facial-carousel-index span');
+  const frameVideos = [videoOne, videoTwo];
   const chapters = [...world.querySelectorAll('.world-chapter')];
   const lashesChapters = [...world.querySelectorAll('.world-chapter-lashes')];
-  const playOnly = active => editorialVideos.forEach(videoEl => {
+  const wellnessChapter = world.querySelector('.wellness-chapter');
+  const playOnly = active => frameVideos.forEach(videoEl => {
     if (!videoEl) return;
     if (videoEl === active) videoEl.play().catch(() => {}); else videoEl.pause();
   });
-  editorialVideos.forEach(videoEl => { if (videoEl) { videoEl.muted = true; videoEl.playsInline = true; } });
+  frameVideos.forEach(videoEl => { if (videoEl) { videoEl.muted = true; videoEl.playsInline = true; } });
+  const setMediaMode = mode => {
+    world.dataset.mediaMode = mode;
+    const isVideo = mode === 'video';
+    const isCarousel = mode === 'carousel';
+    frame.classList.toggle('is-inactive', !isVideo);
+    facialCarousel.classList.toggle('is-active', isCarousel);
+    if (!isVideo) frameVideos.forEach(videoEl => videoEl?.pause());
+  };
+  const setMediaScene = scene => { world.dataset.mediaScene = scene; };
 
   gsap.set(shapes, {force3D:true});
-  const colors = ['#d8b7a3','#c8b7a7','#e1ddd0','#c9b39e','#2a2926','#e6d6c9'];
+  const colors = ['#d8b7a3','#c8b7a7','#e1ddd0','#c9b39e'];
   chapters.forEach((chapter, index) => {
     const targetColor = colors[Math.min(index, colors.length - 1)];
     gsap.to(background, {backgroundColor:targetColor, ease:'none', scrollTrigger:{trigger:chapter,start:'top 72%',end:'top 18%',scrub:1,invalidateOnRefresh:true}});
@@ -844,52 +820,32 @@ function initExperienceWorld(){
   });
   gsap.to(shapes[0], {xPercent:-46,yPercent:35,rotation:18,borderRadius:'50%',backgroundColor:'#c5c7a5',ease:'none',scrollTrigger:{trigger:world,start:'top top',end:'55% bottom',scrub:1.1,invalidateOnRefresh:true}});
   gsap.to(shapes[1], {xPercent:78,yPercent:-52,rotation:-11,borderRadius:'50% 50% 0 0 / 42% 42% 0 0',backgroundColor:'#8e9470',ease:'none',scrollTrigger:{trigger:world,start:'18% top',end:'72% bottom',scrub:1.2,invalidateOnRefresh:true}});
-  gsap.to(shapes[2], {scale:3.4,xPercent:-68,yPercent:-60,backgroundColor:'#4b513d',ease:'none',scrollTrigger:{trigger:world.querySelector('.method-chapter'),start:'top 75%',end:'bottom 30%',scrub:1,invalidateOnRefresh:true}});
+  gsap.to(shapes[2], {scale:2.7,xPercent:-52,yPercent:-42,backgroundColor:'#4b513d',ease:'none',scrollTrigger:{trigger:wellnessChapter,start:'top 62%',end:'bottom 20%',scrub:1,invalidateOnRefresh:true}});
   gsap.timeline({scrollTrigger:{trigger:lashesChapters[0],start:'top 76%',end:'top 25%',scrub:.8,invalidateOnRefresh:true}})
-    .to(frame,{autoAlpha:1,scale:1,duration:.45,ease:'sine.inOut'},0)
+    .to(frame,{autoAlpha:1,scale:1,duration:.45,ease:'sine.inOut',onStart:()=>{ setMediaMode('video'); setMediaScene('process'); }},0)
     .to(videoOne,{opacity:1,scale:1.01,duration:.45,ease:'sine.inOut'},0);
   gsap.timeline({scrollTrigger:{trigger:lashesChapters[1],start:'top 76%',end:'bottom 30%',scrub:.8,invalidateOnRefresh:true}})
-    .to(videoOne,{opacity:0,scale:1.01,duration:.16,ease:'sine.inOut'},0)
+    .to(videoOne,{opacity:0,scale:1.01,duration:.16,ease:'sine.inOut',onStart:()=>setMediaScene('detail'),onReverseComplete:()=>setMediaScene('process')},0)
     .to(videoTwo,{opacity:1,scale:1.01,duration:.16,ease:'sine.inOut'},0)
-    .to(videoTwo,{opacity:0,duration:.14,ease:'sine.inOut',onComplete:()=>videoTwo.pause(),onReverseComplete:()=>videoTwo.play().catch(() => {})},.68)
-    .to(lashesResult,{opacity:1,duration:.14,ease:'sine.inOut'},.68)
-    .to(lashesResult,{scale:1,duration:.18,ease:'none'},.82);
+    .to(videoTwo,{scale:1.01,duration:.18,ease:'none'},.82);
   const facialChapter = world.querySelector('.world-chapter-facial');
-  gsap.timeline({scrollTrigger:{trigger:facialChapter,start:'top 82%',end:'bottom 28%',scrub:.9,invalidateOnRefresh:true}})
-    .to(lashesResult,{opacity:0,duration:.14,ease:'sine.inOut'},0)
-    .to(facialTreatment,{opacity:1,scale:1.01,duration:.14,ease:'sine.inOut'},0)
-    .to(facialTreatment,{opacity:0,duration:.14,ease:'sine.inOut'},.28)
-    .to(facialPhototherapy,{opacity:1,duration:.14,ease:'sine.inOut'},.28)
-    .to(facialPhototherapy,{opacity:0,duration:.14,ease:'sine.inOut'},.54)
-    .to(facialResult,{opacity:1,scale:1.01,duration:.14,ease:'sine.inOut'},.54)
-    .to(facialResult,{opacity:0,duration:.14,ease:'sine.inOut',onComplete:()=>facialResult.pause(),onReverseComplete:()=>facialResult.play().catch(() => {})},.80)
-    .to(facialResultSecondary,{opacity:1,scale:1.01,duration:.14,ease:'sine.inOut'},.80)
-    .to(facialResultSecondary,{scale:1.01,duration:.18,ease:'none'},.96);
-  const wellnessChapter = world.querySelector('.wellness-chapter');
-  gsap.timeline({scrollTrigger:{trigger:wellnessChapter,start:'top 82%',end:'top 38%',scrub:.9,invalidateOnRefresh:true}})
-    .to(frame,{autoAlpha:0,scale:.99,duration:.3,ease:'sine.inOut'},0)
-    .to(facialResultSecondary,{opacity:0,duration:.25,ease:'sine.inOut'},0);
-  const facialItems = world.querySelectorAll('.world-chapter-facial .editorial-list div');
-  gsap.from(facialItems,{y:22,opacity:0,stagger:.06,ease:'power2.out',scrollTrigger:{trigger:world.querySelector('.world-chapter-facial'),start:'top 58%',end:'center 50%',scrub:.8,invalidateOnRefresh:true}});
-  gsap.from(wellnessChapter.querySelectorAll('.wellness-service'),{y:18,opacity:0,stagger:.08,ease:'sine.inOut',scrollTrigger:{trigger:wellnessChapter,start:'top 70%',end:'top 34%',scrub:.9,invalidateOnRefresh:true}});
-  const method = world.querySelector('.method-chapter');
-  const methodItems = method.querySelectorAll('.method-item');
-  const progress = method.querySelector('.method-progress');
-  gsap.from(world.querySelector('.method-sequence'),{opacity:0,scale:.98,clipPath:'inset(0 0 8% 0)',ease:'sine.inOut',scrollTrigger:{trigger:method,start:'top 72%',end:'top 38%',scrub:.9,invalidateOnRefresh:true}});
-  methodItems.forEach((item,index) => {
-    gsap.timeline({scrollTrigger:{trigger:method,start:()=>`${index * 23 + 12}% top`,end:()=>`${index * 23 + 34}% top`,scrub:.75,invalidateOnRefresh:true}})
-      .to(methodItems,{opacity:0,y:-24,duration:.45,ease:'sine.inOut'},0)
-      .to(item,{opacity:1,y:0,duration:.45,ease:'power3.out'},0)
-      .to(progress,{'--method-progress':(index + 1) / methodItems.length,duration:.45,ease:'none'},0);
-  });
+  const facialIntro = world.querySelector('.facial-intro');
+  gsap.timeline({scrollTrigger:{trigger:facialIntro,start:'top 70%',end:'bottom 24%',scrub:.9,invalidateOnRefresh:true}})
+    .to(frame,{autoAlpha:0,scale:.99,duration:.16,ease:'sine.inOut',onStart:()=>setMediaMode('carousel'),onReverseComplete:()=>setMediaMode('video')},0)
+    .to(facialCarousel,{autoAlpha:1,scale:1,duration:.16,ease:'sine.inOut'},0)
+    .to(facialCarousel,{autoAlpha:0,scale:.99,duration:.16,ease:'sine.inOut',onStart:()=>setMediaMode('none'),onReverseComplete:()=>setMediaMode('carousel')},.68);
+  if (facialCarouselTrack && facialCarouselIndex) {
+    facialCarouselTrack.addEventListener('scroll', () => {
+      const activeIndex = facialCarouselTrack.scrollLeft >= facialCarouselTrack.clientWidth * .45 ? 2 : 1;
+      facialCarouselIndex.textContent = String(activeIndex).padStart(2, '0');
+    }, {passive:true});
+  }
+  const facialItems = world.querySelectorAll('.facial-services .service-card');
+  gsap.from(facialItems,{y:18,opacity:0,stagger:.045,ease:'power2.out',scrollTrigger:{trigger:facialChapter,start:'top 68%',end:'top 28%',scrub:.8,invalidateOnRefresh:true}});
+  gsap.from(wellnessChapter.querySelectorAll('.wellness-card'),{y:18,opacity:0,stagger:.08,ease:'sine.inOut',scrollTrigger:{trigger:wellnessChapter,start:'top 70%',end:'top 34%',scrub:.9,invalidateOnRefresh:true}});
   ScrollTrigger.create({trigger:lashesChapters[0],start:'top 72%',end:'bottom 32%',onEnter:()=>playOnly(videoOne),onEnterBack:()=>playOnly(videoOne)});
   ScrollTrigger.create({trigger:lashesChapters[1],start:'top 72%',end:'bottom 32%',onEnter:()=>{ videoOne.play().catch(() => {}); videoTwo.play().catch(() => {}); },onEnterBack:()=>{ videoOne.play().catch(() => {}); videoTwo.play().catch(() => {}); },onLeave:()=>videoTwo.pause()});
   ScrollTrigger.create({trigger:lashesChapters[1],start:'top 38%',end:'bottom top',onEnter:()=>videoOne.pause(),onLeaveBack:()=>videoOne.play().catch(() => {})});
-  ScrollTrigger.create({trigger:facialChapter,start:'top 74%',end:'top 52%',onEnter:()=>playOnly(facialTreatment),onEnterBack:()=>playOnly(facialTreatment)});
-  ScrollTrigger.create({trigger:facialChapter,start:'top 52%',end:'top 28%',onEnter:()=>facialTreatment.pause(),onLeaveBack:()=>facialTreatment.play().catch(() => {})});
-  ScrollTrigger.create({trigger:facialChapter,start:'top 28%',end:'top 4%',onEnter:()=>playOnly(facialResult),onEnterBack:()=>playOnly(facialResult)});
-  ScrollTrigger.create({trigger:facialChapter,start:'top 4%',end:'bottom 26%',onEnter:()=>playOnly(facialResultSecondary),onEnterBack:()=>playOnly(facialResultSecondary),onLeave:()=>facialResultSecondary.pause()});
-  ScrollTrigger.create({trigger:method,start:'top 55%',end:'bottom 40%',onEnter:()=>header.dataset.scene='dark',onEnterBack:()=>header.dataset.scene='dark',onLeave:()=>header.dataset.scene='light',onLeaveBack:()=>header.dataset.scene='light'});
   ScrollTrigger.refresh();
 }
 
