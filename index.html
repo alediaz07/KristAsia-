@@ -53,12 +53,10 @@ nav a:hover{color:var(--terracotta)}
   padding:11px 18px; font-weight:600;
 }
 .hero{
-  --hero-geometry-left:-34vw;
   --hero-geometry-top:-54svh;
   --hero-geometry-width:160vw;
-  --hero-geometry-height:128svh;
+  --hero-geometry-height:146svh;
   --hero-geometry-radius:0 0 50% 50% / 0 0 42% 42%;
-  --hero-geometry-x:-4vw;
   --hero-geometry-y:7svh;
   --hero-geometry-scale:.98;
   --hero-texture-y:0svh;
@@ -74,7 +72,7 @@ nav a:hover{color:var(--terracotta)}
     radial-gradient(circle at 14% 78%,rgba(184,117,92,.07),transparent 29%),
     var(--ivory);
 }
-.hero-geometry{position:fixed;z-index:0;left:var(--hero-geometry-left);top:var(--hero-geometry-top);width:var(--hero-geometry-width);height:var(--hero-geometry-height);border-radius:var(--hero-geometry-radius);background:linear-gradient(145deg,rgba(232,212,194,.92),rgba(194,161,106,.22));transform:translate3d(var(--hero-geometry-x),var(--hero-geometry-y),0) scale(var(--hero-geometry-scale));transform-origin:center top;pointer-events:none;will-change:transform,border-radius}
+.hero-geometry{position:fixed;z-index:0;left:50%;top:var(--hero-geometry-top);width:var(--hero-geometry-width);height:var(--hero-geometry-height);min-height:128svh;min-height:128dvh;border-radius:var(--hero-geometry-radius);background:linear-gradient(145deg,rgba(232,212,194,.92),rgba(194,161,106,.22));transform:translate3d(-50%,var(--hero-geometry-y),0) scale(var(--hero-geometry-scale));transform-origin:center top;pointer-events:none;will-change:transform,border-radius}
 .hero:after{content:"";position:absolute;inset:-8%;z-index:0;opacity:.17;pointer-events:none;background-image:radial-gradient(rgba(42,41,38,.16) .55px,transparent .55px),radial-gradient(ellipse at 76% 22%,rgba(255,250,242,.58),transparent 34%);background-size:5px 5px,auto;mask-image:linear-gradient(138deg,transparent 6%,black 38%,transparent 90%);transform:translate3d(0,var(--hero-texture-y),0);will-change:transform}
 .hero-inner{position:relative;z-index:1;width:min(100%,1180px);margin:0 auto;opacity:1}
 .hero-inner{display:block;text-align:center}
@@ -233,37 +231,27 @@ nav a:hover{color:var(--terracotta)}
 .story-copy{
   position:absolute;inset:0;z-index:2;pointer-events:none;
 }
-.story-outro{
-  position:absolute;inset:0;z-index:1;overflow:hidden;
-  background:var(--outro-sand);opacity:var(--story-outro-opacity,0);
-  pointer-events:none;will-change:opacity;
-}
-.story-outro:after{
-  content:"";position:absolute;left:50%;bottom:-66svh;
-  width:160vw;height:128svh;border-radius:50% 50% 0 0 / 42% 42% 0 0;
-  background:var(--outro-arc);opacity:var(--story-outro-shape-opacity,0);
-  transform:translateX(-50%) scale(var(--story-outro-shape-scale,.36));
-  transform-origin:center bottom;will-change:transform,opacity;
-}
 .story-step{
   position:absolute;
-  max-width:min(520px,72vw);
-  color:#fff;
+  max-width:min(580px,58vw);
+  color:var(--ink);
   opacity:0;
-  transform:translateY(18px);
-  transition:opacity .18s linear, transform .18s linear;
-  text-shadow:0 2px 24px rgba(0,0,0,.35);
+  transform:none;
+  transition:opacity .18s linear;
+  text-shadow:none;
+  filter:none;
 }
-.story-step.active{opacity:1;transform:translateY(0)}
+.story-step.active{opacity:1}
+.story-gsap .story-step{transition:none}
 .story-step h2{
-  font-family:Georgia, "Times New Roman", serif;
-  font-size:clamp(42px,6vw,90px);
-  line-height:.96;
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-size:clamp(38px,5vw,72px);
+  line-height:.98;
   font-weight:500;
-  margin:0 0 12px;
+  letter-spacing:-.035em;
+  margin:0;
 }
-.story-step p{margin:0;font-size:clamp(14px,1.4vw,20px);letter-spacing:.03em}
-.s1,.s2,.s3,.s4{left:7vw;top:22vh;text-align:left}
+.story-line{display:block;overflow:hidden;padding:.03em .08em .08em}.story-line>span{display:block;will-change:transform,opacity}.story-emphasis{font-style:italic;color:#8f4f3c}.s1{left:clamp(28px,11vw,170px);top:27svh;text-align:left}.s2{left:clamp(28px,14vw,220px);right:auto;top:45svh;text-align:left}
 
 .logo-reveal{
   min-height:min(78svh,760px);
@@ -393,7 +381,7 @@ footer nav{align-items:center;flex-wrap:wrap}
   header{padding:14px 16px}
   .brand img{width:auto;height:auto;max-height:30px}
   .hero{min-height:100svh;padding:128px 22px 64px;align-items:center}
-  .hero-geometry{--hero-geometry-left:-58vw;--hero-geometry-top:-44svh;--hero-geometry-width:180vw;--hero-geometry-height:116svh;--hero-geometry-x:-3vw;--hero-geometry-y:6svh}
+  .hero-geometry{--hero-geometry-top:-54svh;--hero-geometry-width:180vw;--hero-geometry-height:140svh;--hero-geometry-y:6svh}
   .video-experience-stage{margin-top:-8px}
   .hero h1{font-size:clamp(62px,17vw,96px);line-height:.86;margin:34px auto 38px;width:100%}
   .hero p{font-size:14px;line-height:1.55;max-width:calc(100% - 40px);margin-bottom:38px}
@@ -416,7 +404,8 @@ footer nav{align-items:center;flex-wrap:wrap}
   .scene-lashes .media-frame{border-radius:44% 10% 38% 8% / 10% 34% 12% 38%}
   #scrollVideo,.video-wrap video{object-position:66% 50%}
   #scrollVideo{object-position:center center}
-  .story-step{left:18px!important;right:18px!important;top:16svh!important;bottom:auto!important;text-align:left!important;max-width:66vw}
+  .story-step{left:18px!important;right:18px!important;bottom:auto!important;text-align:left!important;max-width:78vw}
+  .s1{top:20svh!important}.s2{top:48svh!important}
   .story-step h2{font-size:clamp(40px,12vw,64px)}
   .services{grid-template-columns:1fr}
   .card{min-height:330px}
@@ -451,6 +440,33 @@ footer nav{align-items:center;flex-wrap:wrap}
   header,.kicker,.hero h1 span,.hero p,.hero-actions,.hero-aside{animation:none;opacity:1;transform:none}
   .hero-aside:before{animation:none}
 }
+
+/* A single editorial world begins after the opening film. */
+.experience-world{--world-bg:#f1e7dc;position:relative;isolation:isolate;background:transparent;overflow:clip;color:var(--ink)}
+.world-background,.world-shapes,.world-stage{position:absolute;inset:0;pointer-events:none}
+.world-background{height:auto;background:var(--world-bg);z-index:0;transition:background-color .2s linear}
+.world-shapes{height:auto;z-index:1;overflow:hidden}
+.world-shape{position:absolute;will-change:transform,border-radius,background-color}
+.world-shape-a{width:min(76vw,1040px);height:min(76vw,1040px);right:-30vw;top:-25vw;border-radius:48% 52% 46% 54%;background:#e4cdbb}
+.world-shape-b{width:64vw;height:86svh;left:-40vw;bottom:-34svh;border-radius:52% 48% 0 0 / 42% 38% 0 0;background:rgba(255,250,242,.67)}
+.world-shape-c{width:36vw;height:36vw;right:9vw;bottom:8svh;border-radius:50%;background:rgba(127,130,97,.18)}
+.world-stage{position:sticky;top:0;height:100svh;margin-bottom:-100svh;z-index:2;overflow:hidden}
+.world-media-frame{position:absolute;right:clamp(24px,7vw,120px);top:50%;width:min(42vw,650px);aspect-ratio:4/5;transform:translateY(-50%);overflow:hidden;border-radius:48% 10% 42% 8% / 12% 38% 16% 42%;background:#ded7ca;box-shadow:0 28px 80px rgba(42,41,38,.16);will-change:transform,border-radius}
+.world-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);will-change:opacity,transform}
+.world-video-scrub{opacity:1}.world-stage-caption{position:absolute;right:clamp(24px,7vw,120px);bottom:8svh;width:min(42vw,650px);font:500 10px/1.4 "Manrope",sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.64}
+.world-chapters{position:relative;z-index:3}
+.world-chapter{min-height:112svh;display:flex;align-items:center;padding:clamp(110px,13vw,190px) clamp(20px,7vw,120px);padding-right:52vw;position:relative}
+.world-chapter:first-child{min-height:92svh;padding-top:clamp(120px,18vw,220px)}
+.world-copy{max-width:640px}.world-overline{font:600 11px/1.4 "Manrope",sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--terracotta);margin:0 0 22px}.world-copy h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(52px,6.8vw,104px);font-weight:500;line-height:.91;letter-spacing:-.035em;margin:0 0 24px}.world-copy h2 .line{display:block;clip-path:inset(0 0 0 0)}.world-copy h2 .line > span{display:block}.world-copy .lead{max-width:480px;margin:0;font:400 clamp(16px,1.45vw,21px)/1.55 "Manrope",sans-serif;color:#59564f}
+.world-chapter-intro .world-copy{max-width:720px}.world-chapter-intro h2{font-size:clamp(48px,6vw,88px)}
+.world-chapter-lashes{min-height:125svh}.world-chapter-facial{min-height:138svh}.world-chapter-wellness{min-height:105svh}
+.ritual-index{font:600 12px/1 "Manrope",sans-serif;letter-spacing:.16em;margin:34px 0 0;color:rgba(42,41,38,.58)}
+.editorial-list{margin:42px 0 0;max-width:620px;display:grid;grid-template-columns:1fr 1fr;column-gap:36px}.editorial-list div{border-top:1px solid rgba(42,41,38,.24);padding:15px 0;font:500 clamp(18px,1.9vw,30px)/1.15 Georgia,serif}.editorial-list span{display:inline-block;width:28px;font:600 10px/1 "Manrope",sans-serif;letter-spacing:.08em;color:var(--terracotta);vertical-align:middle}
+.method-chapter{color:var(--white);min-height:175svh;padding-right:clamp(20px,7vw,120px);align-items:flex-start}.method-intro{position:sticky;top:18svh;max-width:720px}.method-chapter .world-overline{color:#d7c39f}.method-chapter .lead{color:#e5dfd4}.method-sequence{position:absolute;right:clamp(20px,7vw,120px);top:44svh;width:min(36vw,470px);min-height:78svh}.method-item{position:absolute;inset:0;border-top:1px solid rgba(255,255,255,.28);padding-top:22px;opacity:0;transform:translateY(30px)}.method-item:first-child{opacity:1;transform:none}.method-item strong{font:600 12px/1 "Manrope",sans-serif;letter-spacing:.16em;color:#d7c39f}.method-item h3{font:500 clamp(38px,4vw,64px)/1 Georgia,serif;margin:25px 0 14px}.method-item p{max-width:350px;margin:0;color:#e5dfd4;line-height:1.55}.method-progress{position:absolute;left:-24px;top:0;width:1px;height:100%;background:rgba(255,255,255,.25)}.method-progress:after{content:"";display:block;width:3px;height:25%;margin-left:-1px;background:#d7c39f;transform-origin:top;transform:scaleY(var(--method-progress,0));will-change:transform}
+.social-chapter{min-height:105svh;padding-right:clamp(20px,7vw,120px)}.social-chapter .world-copy{max-width:100%}.film-strip{display:grid;grid-template-columns:1.1fr .8fr 1.15fr;gap:14px;margin-top:46px;align-items:end}.film-placeholder{min-height:250px;display:flex;align-items:flex-end;padding:22px;border:1px solid rgba(42,41,38,.16);background:linear-gradient(145deg,rgba(255,250,242,.78),rgba(232,223,210,.6));font:600 10px/1.4 "Manrope",sans-serif;letter-spacing:.12em;text-transform:uppercase}.film-placeholder:nth-child(2){min-height:330px;transform:translateY(-22px)}.film-placeholder:nth-child(3){min-height:280px}.instagram-link{display:inline-block;margin-top:28px}
+.booking-world{min-height:100svh;display:grid;place-items:center;text-align:center;padding:120px 24px 80px;position:relative;z-index:2;color:#fff;background:#4b513d}.booking-world:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,#707753 0 38%,transparent 39%);opacity:.8;pointer-events:none}.booking-world > div{position:relative}.booking-world h2{font:500 clamp(56px,8vw,118px)/.92 Georgia,serif;margin:0 0 26px}.booking-world p{margin:0 auto 28px;font-size:20px;color:#f5f0e7}.booking-world .btn-primary{background:#fff;color:var(--olive);font-size:18px;padding:16px 28px}.booking-world .location{font-size:14px;line-height:1.6;margin-top:28px;color:#e4ddcf}
+@media(max-width:800px){.experience-world{overflow:hidden}.world-background,.world-shapes{position:absolute;height:100%}.world-stage{height:100svh}.world-media-frame{top:12svh;right:18px;left:18px;width:auto;height:43svh;aspect-ratio:auto;border-radius:38% 9% 32% 8% / 12% 28% 12% 28%}.world-stage-caption{display:none}.world-shape-a{width:130vw;height:130vw;right:-58vw;top:8svh}.world-shape-b{width:120vw;height:76svh;left:-70vw;bottom:12svh}.world-shape-c{width:62vw;height:62vw;right:-24vw;bottom:9svh}.world-chapter{min-height:104svh;align-items:flex-end;padding:58svh 20px 60px}.world-chapter:first-child{min-height:100svh;padding-top:58svh}.world-chapter-lashes,.world-chapter-facial,.world-chapter-wellness{min-height:108svh}.world-copy h2{font-size:clamp(48px,14vw,74px)}.world-copy .lead{font-size:15px}.editorial-list{grid-template-columns:1fr;margin-top:28px}.editorial-list div{font-size:21px;padding:10px 0}.method-chapter{min-height:175svh;padding:110px 20px 60px;display:block}.method-intro{position:relative;top:auto}.method-sequence{left:20px;right:20px;top:76svh;width:auto;min-height:62svh}.social-chapter{padding:58svh 20px 60px;min-height:115svh}.film-strip{margin-top:30px;gap:8px}.film-placeholder{min-height:135px;padding:11px;font-size:8px}.film-placeholder:nth-child(2){min-height:190px;transform:translateY(-10px)}.film-placeholder:nth-child(3){min-height:155px}.booking-world{min-height:88svh}.booking-world h2{font-size:clamp(56px,16vw,80px)}}
+@media(prefers-reduced-motion:reduce){.world-background,.world-shapes,.world-stage{position:absolute}.world-video{opacity:0!important;transform:none!important}.world-video-scrub{opacity:1!important}.world-media-frame{transform:none!important}.world-chapter{min-height:auto;padding-top:58svh}.method-chapter{min-height:auto}.method-intro{position:relative;top:auto}.method-sequence{position:relative;left:auto;right:auto;top:auto;width:auto;min-height:0;margin-top:44px}.method-item{position:relative;opacity:1!important;transform:none!important;margin-top:30px}.method-progress{display:none}}
 </style>
 </head>
 <body>
@@ -513,114 +529,29 @@ footer nav{align-items:center;flex-wrap:wrap}
 
     <section class="scroll-story" id="story" aria-label="Experiencia visual de belleza y bienestar">
     <div class="sticky">
-      <div class="story-outro" aria-hidden="true"></div>
       <div class="story-copy">
-        <div class="story-step s1" data-start="0.02" data-end="0.21"><h2>TU RITUAL</h2><p>Todo comienza contigo.</p></div>
-        <div class="story-step s2" data-start="0.22" data-end="0.46"><h2>TU PIEL</h2><p>Cuidado que se siente.</p></div>
-        <div class="story-step s3" data-start="0.47" data-end="0.71"><h2>TU PAUSA</h2><p>Baja el ritmo.</p></div>
-        <div class="story-step s4" data-start="0.72" data-end="0.95"><h2>TU MOMENTO</h2><p>Relájate. Renueva. Brilla.</p></div>
+        <div class="story-step s1" data-start="0.08" data-end="0.48"><h2><span class="story-line"><span>No se trata solo</span></span><span class="story-line"><span>de <em class="story-emphasis">cómo te ves.</em></span></span></h2></div>
+        <div class="story-step s2" data-start="0.32" data-end="0.78"><h2><span class="story-line"><span>Sino de cómo</span></span><span class="story-line"><span>te haces <em class="story-emphasis">sentir.</em></span></span></h2></div>
       </div>
     </div>
     </section>
   </div>
 
-  <section class="logo-reveal scene" id="statement">
-    <div class="statement-copy">
-      <h2>Belleza diseñada para ti.</h2>
-      <p>Técnicas certificadas, atención personalizada y tratamientos pensados para realzar tu belleza natural.</p>
+  <section class="experience-world" id="services" aria-label="Experiencia KristAsia">
+    <div class="world-background" aria-hidden="true"></div>
+    <div class="world-shapes" aria-hidden="true"><div class="world-shape world-shape-a"></div><div class="world-shape world-shape-b"></div><div class="world-shape world-shape-c"></div></div>
+    <div class="world-stage" aria-hidden="true"><div class="world-media-frame"><video class="world-video world-video-scrub" preload="metadata" muted playsinline loop poster="poster.jpg" src="kristasia-scroll-scrub.mp4"></video><video class="world-video world-video-one" preload="metadata" muted playsinline loop poster="poster.jpg" src="kristasia-lashes-result-01.mp4"></video><video class="world-video world-video-two" preload="metadata" muted playsinline loop poster="poster.jpg" src="kristasia-lashes-result-02.mp4"></video></div><div class="world-stage-caption">Beauty Center · San Miguel</div></div>
+    <div class="world-chapters">
+      <section class="world-chapter world-chapter-intro" id="statement"><div class="world-copy"><p class="world-overline">KristAsia Beauty Center</p><h2><span class="line"><span>Belleza diseñada</span></span><span class="line"><span>para ti.</span></span></h2><p class="lead">Técnicas certificadas, atención personalizada y tratamientos pensados para realzar tu belleza natural.</p></div></section>
+      <section class="world-chapter world-chapter-lashes" id="lashes" aria-labelledby="lash-result-title"><div class="world-copy"><p class="world-overline">01 · Lashes</p><h2 id="lash-result-title"><span class="line"><span>Tu mirada,</span></span><span class="line"><span>elevada.</span></span></h2><p class="lead">Resultados diseñados para respetar la forma natural de tus ojos y realzar tu expresión.</p><p class="ritual-index">Lifting de pestañas</p></div></section>
+      <section class="world-chapter world-chapter-lashes" aria-labelledby="lash-detail-title"><div class="world-copy"><p class="world-overline">Diseño KristAsia</p><h2 id="lash-detail-title"><span class="line"><span>Diseñado desde</span></span><span class="line"><span>cada ángulo.</span></span></h2><p class="lead">Curvatura, longitud y definición trabajadas para acompañar la forma natural de tu mirada.</p></div></section>
+      <section class="world-chapter world-chapter-facial" id="facial" aria-labelledby="facial-title"><div class="world-copy"><p class="world-overline">02 · Facial Studio</p><h2 id="facial-title"><span class="line"><span>Más allá de</span></span><span class="line"><span>tu mirada.</span></span></h2><p class="lead">Tratamientos pensados para limpiar, hidratar, renovar y cuidar tu piel.</p><div class="editorial-list"><div><span>01</span>Limpieza facial básica</div><div><span>02</span>Limpieza facial profunda</div><div><span>03</span>Hidratación facial</div><div><span>04</span>Reflexología facial</div><div><span>05</span>Drenaje linfático facial</div><div><span>06</span>Masajes faciales</div><div><span>07</span>Fototerapia</div><div><span>08</span>Alta frecuencia facial</div></div></div></section>
+      <section class="world-chapter world-chapter-wellness" aria-labelledby="wellness-title"><div class="world-copy"><p class="world-overline">03 · Beauty &amp; Wellness</p><h2 id="wellness-title"><span class="line"><span>Relájate.</span></span><span class="line"><span>Renueva. Brilla.</span></span></h2><p class="lead">Un momento de pausa para reconectar contigo a través del cuidado y el bienestar.</p><div class="editorial-list"><div><span>01</span>Masajes relajantes</div><div><span>02</span>Exfoliación corporal</div><div><span>03</span>Experiencias de bienestar</div></div></div></section>
+      <section class="world-chapter method-chapter" id="experience" aria-labelledby="experience-title"><div class="world-copy method-intro"><p class="world-overline">El método</p><h2 id="experience-title"><span class="line"><span>La experiencia</span></span><span class="line"><span>KristAsia.</span></span></h2><p class="lead">Cada paso acompaña tu experiencia con atención y precisión.</p></div><div class="method-sequence"><div class="method-progress" aria-hidden="true"></div><article class="method-item"><strong>01 — CONSULTA</strong><h3>Conocemos</h3><p>Conocemos tus necesidades y el resultado que buscas.</p></article><article class="method-item"><strong>02 — DISEÑO</strong><h3>Seleccionamos</h3><p>Seleccionamos el tratamiento o experiencia adecuada.</p></article><article class="method-item"><strong>03 — EXPERIENCIA</strong><h3>Realizamos</h3><p>Realizamos el servicio con atención y precisión.</p></article><article class="method-item"><strong>04 — CUIDADO</strong><h3>Acompañamos</h3><p>Te orientamos para mantener tus resultados.</p></article></div></section>
+      <section class="world-chapter social-chapter" aria-labelledby="instagram-title"><div class="world-copy"><p class="world-overline">Comunidad</p><h2 id="instagram-title"><span class="line"><span>Síguenos en</span></span><span class="line"><span>Instagram.</span></span></h2><div class="film-strip"><div class="film-placeholder">Lashes / detalle</div><div class="film-placeholder">Facial / ritual</div><div class="film-placeholder">Beauty / bienestar</div></div><a class="instagram-link" href="https://www.instagram.com/kristasia.beautycenter/" target="_blank" rel="noreferrer">@kristasia.beautycenter ↗</a></div></section>
     </div>
   </section>
-
-  <section class="section scene scene-services" id="services">
-    <h2>Encuentra tu ritual.</h2>
-    <p class="lead">Tres universos de belleza y bienestar, pensados para acompañarte desde la mirada hasta la piel y el descanso.</p>
-    <div class="services">
-      <article class="card" id="lashes">
-        <div class="num">01 · Lashes</div>
-        <h3>Tu mirada, elevada.</h3>
-        <p>Diseños y tratamientos pensados para realzar la mirada respetando la expresión natural de tus ojos.</p>
-        <ul><li>Lifting de pestañas</li></ul>
-      </article>
-      <article class="card" id="facial">
-        <div class="num">02 · Facial Studio</div>
-        <h3>Más allá de tu mirada.</h3>
-        <p>Tratamientos pensados para limpiar, hidratar, renovar y cuidar tu piel.</p>
-        <ul><li>Limpieza facial básica</li><li>Limpieza facial profunda</li><li>Hidratación facial</li><li>Reflexología facial</li></ul>
-      </article>
-      <article class="card">
-        <div class="num">03 · Beauty &amp; Wellness</div>
-        <h3>Relájate. Renueva. Brilla.</h3>
-        <p>Un espacio cálido para bajar el ritmo y volver a ti.</p>
-        <ul><li>Masajes relajantes</li><li>Exfoliación corporal</li><li>Experiencias de bienestar</li></ul>
-      </article>
-    </div>
-  </section>
-
-  <section class="media-section scene scene-lashes" aria-labelledby="lash-result-title">
-    <div class="media-intro">
-      <h2 id="lash-result-title">Tu mirada,<br>elevada.</h2>
-      <p>Resultados diseñados para respetar la forma natural de tus ojos y realzar tu expresión.</p>
-    </div>
-    <div class="media-frame reveal-media">
-      <video class="lash-video" preload="metadata" muted playsinline loop poster="poster.jpg" src="kristasia-lashes-result-01.mp4" aria-label="Resultado de lashes en primer plano"></video>
-    </div>
-  </section>
-
-  <section class="media-section alt scene scene-lashes" aria-labelledby="lash-detail-title">
-    <div class="media-intro">
-      <h2 id="lash-detail-title">Diseñado desde<br>cada ángulo.</h2>
-      <p>Curvatura, longitud y definición trabajadas para acompañar la forma natural de tu mirada.</p>
-    </div>
-    <div class="media-frame reveal-media">
-      <video class="lash-video" preload="metadata" muted playsinline loop poster="poster.jpg" src="kristasia-lashes-result-02.mp4" aria-label="Detalle lateral de un diseño de lashes"></video>
-    </div>
-  </section>
-
-  <section class="section facial scene scene-facial" aria-labelledby="facial-title">
-    <h2 id="facial-title">Más allá de tu mirada.</h2>
-    <p class="lead">Tratamientos pensados para limpiar, hidratar, renovar y cuidar tu piel.</p>
-    <div class="service-list">
-      <div>Limpieza facial básica</div><div>Limpieza facial profunda</div>
-      <div>Hidratación facial</div><div>Reflexología facial</div>
-      <div>Drenaje linfático facial</div><div>Masajes faciales</div>
-      <div>Fototerapia</div><div>Alta frecuencia facial</div>
-    </div>
-  </section>
-
-  <section class="section calm scene scene-wellness">
-    <h2>Relájate.<br>Renueva. Brilla.</h2>
-    <p class="lead">Un momento de pausa para reconectar contigo a través del cuidado y el bienestar.</p>
-    <div class="service-list"><div>Masajes relajantes</div><div>Exfoliación corporal</div><div>Experiencias de bienestar</div></div>
-  </section>
-
-  <section class="section method scene scene-method" id="experience">
-    <h2>La experiencia<br>KristAsia.</h2>
-    <div class="method-grid">
-      <div class="method-item"><strong>01 — CONSULTA</strong><h3>Conocemos</h3><p>Conocemos tus necesidades y el resultado que buscas.</p></div>
-      <div class="method-item"><strong>02 — DISEÑO</strong><h3>Seleccionamos</h3><p>Seleccionamos el tratamiento o experiencia adecuada.</p></div>
-      <div class="method-item"><strong>03 — EXPERIENCIA</strong><h3>Realizamos</h3><p>Realizamos el servicio con atención y precisión.</p></div>
-      <div class="method-item"><strong>04 — CUIDADO</strong><h3>Acompañamos</h3><p>Te orientamos para mantener tus resultados.</p></div>
-    </div>
-  </section>
-
-  <section class="section instagram scene scene-instagram" aria-labelledby="instagram-title">
-    <h2 id="instagram-title">Síguenos en Instagram</h2>
-    <div class="instagram-grid">
-      <!-- TODO: reemplazar estos placeholders por fotografías propias aprobadas. -->
-      <div class="placeholder">Lashes / detalle</div><div class="placeholder">Facial / ritual</div><div class="placeholder">Beauty / bienestar</div>
-    </div>
-    <a class="instagram-link" href="https://www.instagram.com/kristasia.beautycenter/" target="_blank" rel="noreferrer">@kristasia.beautycenter ↗</a>
-  </section>
-
-  <section class="booking scene scene-booking" id="booking">
-    <div>
-      <h2>Tu momento<br>comienza aquí.</h2>
-      <p>Reserva tu experiencia KristAsia.</p>
-      <!-- TODO: añadir enlace oficial de WhatsApp/reservas. -->
-      <a class="btn btn-primary" href="#">Reservar cita</a>
-      <div class="location">San Miguel, Desamparados,<br>San José, Costa Rica.</div>
-    </div>
-  </section>
+  <section class="booking-world" id="booking"><div><h2>Tu momento<br>comienza aquí.</h2><p>Reserva tu experiencia KristAsia.</p><a class="btn btn-primary" href="#">Reservar cita</a><div class="location">San Miguel, Desamparados,<br>San José, Costa Rica.</div></div></section>
 </main>
 
 <footer id="contact">
@@ -634,6 +565,8 @@ footer nav{align-items:center;flex-wrap:wrap}
   <p>© Beauty Center KristAsia</p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script>
 const hero = document.querySelector('.hero');
 const header = document.querySelector('header');
@@ -651,11 +584,7 @@ const mobileScrollVideoMedia = typeof window.matchMedia === 'function'
   : null;
 const heroGeometry = document.querySelector('.hero-geometry');
 const steps = [...document.querySelectorAll('.story-step')];
-const storyOutro = document.querySelector('.story-outro');
-const sceneLayers = [...document.querySelectorAll('.scene')];
-const lashVideos = [...document.querySelectorAll('.lash-video')];
-const revealMedia = [...document.querySelectorAll('.reveal-media')];
-const statementCopy = document.querySelector('.statement-copy');
+const methodChapter = document.querySelector('.method-chapter');
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNav = document.getElementById('mobileNav');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -666,6 +595,7 @@ let currentVideoMode = null;
 let pendingVideoProgress = 0;
 let pendingSeekTime = FIRST_FRAME_TIME;
 let scrollVideoReady = false;
+let storyTypographyReady = false;
 
 function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
 
@@ -770,31 +700,21 @@ function updateHeroGeometry(){
   const progress = smoothstep(clamp((window.scrollY - start) / Math.max(1, end - start), 0, 1));
   const compact = window.matchMedia('(max-width:800px)').matches;
   const initial = compact
-    ? {left:-58,top:-44,width:180,height:116,x:-3,y:6}
-    : {left:-34,top:-54,width:160,height:128,x:-4,y:7};
+    ? {top:-54,width:180,height:140,y:6}
+    : {top:-54,width:160,height:146,y:7};
+  const cover = compact
+    ? {top:-28,height:158}
+    : {top:-30,height:160};
   const inverse = 1 - progress;
-  heroGeometry.style.setProperty('--hero-geometry-left', `${(initial.left * inverse).toFixed(2)}vw`);
-  heroGeometry.style.setProperty('--hero-geometry-top', `${(initial.top * inverse).toFixed(2)}svh`);
+  const curveInverse = 1 - smoothstep(clamp(progress / .2, 0, 1));
+  const coverProgress = smoothstep(clamp(progress / .2, 0, 1));
+  heroGeometry.style.setProperty('--hero-geometry-top', `${(initial.top + ((cover.top - initial.top) * coverProgress)).toFixed(2)}svh`);
   heroGeometry.style.setProperty('--hero-geometry-width', `${(100 + ((initial.width - 100) * inverse)).toFixed(2)}vw`);
-  heroGeometry.style.setProperty('--hero-geometry-height', `${(100 + ((initial.height - 100) * inverse)).toFixed(2)}svh`);
-  heroGeometry.style.setProperty('--hero-geometry-radius', `0 0 ${(50 * inverse).toFixed(2)}% ${(50 * inverse).toFixed(2)}% / 0 0 ${(42 * inverse).toFixed(2)}% ${(42 * inverse).toFixed(2)}%`);
-  heroGeometry.style.setProperty('--hero-geometry-x', `${(initial.x * inverse).toFixed(2)}vw`);
+  heroGeometry.style.setProperty('--hero-geometry-height', `${(initial.height + ((cover.height - initial.height) * coverProgress)).toFixed(2)}svh`);
+  heroGeometry.style.setProperty('--hero-geometry-radius', `0 0 ${(50 * curveInverse).toFixed(2)}% ${(50 * curveInverse).toFixed(2)}% / 0 0 ${(42 * curveInverse).toFixed(2)}% ${(42 * curveInverse).toFixed(2)}%`);
   heroGeometry.style.setProperty('--hero-geometry-y', `${(initial.y * inverse).toFixed(2)}svh`);
   heroGeometry.style.setProperty('--hero-geometry-scale', (.98 + (.02 * progress)).toFixed(3));
   hero.style.setProperty('--hero-texture-y', `${(progress * -3).toFixed(2)}svh`);
-}
-
-function updateSceneLayers(){
-  const viewport = window.innerHeight;
-  sceneLayers.forEach(scene => {
-    const rect = scene.getBoundingClientRect();
-    const travel = Math.max(1, rect.height + (viewport * .7));
-    const progress = smoothstep(clamp(((viewport * .82) - rect.top) / travel, 0, 1));
-    scene.style.setProperty('--scene-progress', progress.toFixed(3));
-    if (scene.classList.contains('scene-method')) {
-      scene.style.setProperty('--scene-method-scale', (.74 + (.26 * progress)).toFixed(3));
-    }
-  });
 }
 
 function updateExperience(){
@@ -830,24 +750,21 @@ function updateExperience(){
 
   queueScrollVideoSeek(targetTime);
 
-  steps.forEach(el => {
-    const start = parseFloat(el.dataset.start);
-    const end = parseFloat(el.dataset.end);
-    el.classList.toggle('active', storyProgress >= start && storyProgress <= end);
-  });
-
-  if (storyOutro) {
-    const outroProgress = smoothstep(clamp((storyProgress - .92) / .08, 0, 1));
-    storyOutro.style.setProperty('--story-outro-opacity', outroProgress.toFixed(3));
-    storyOutro.style.setProperty('--story-outro-shape-opacity', outroProgress.toFixed(3));
-    storyOutro.style.setProperty('--story-outro-shape-scale', (.36 + (.64 * outroProgress)).toFixed(3));
+  if (!storyTypographyReady) {
+    steps.forEach(el => {
+      const start = parseFloat(el.dataset.start);
+      const end = parseFloat(el.dataset.end);
+      el.classList.toggle('active', storyProgress >= start && storyProgress <= end);
+    });
   }
 
-  updateSceneLayers();
   updateHeroGeometry();
 
   header.style.setProperty('--logo-transition-progress', transitionProgress.toFixed(3));
-  header.dataset.scene = transitionProgress > .72 ? 'dark' : 'light';
+  const openingStillVisible = story.getBoundingClientRect().bottom > 0;
+  const methodRect = methodChapter && methodChapter.getBoundingClientRect();
+  const methodIsVisible = methodRect && methodRect.top < window.innerHeight * .56 && methodRect.bottom > window.innerHeight * .25;
+  header.dataset.scene = openingStillVisible ? (transitionProgress > .72 ? 'dark' : 'light') : (methodIsVisible ? 'dark' : 'light');
   experienceRaf = null;
 }
 
@@ -858,33 +775,6 @@ function onScroll(){
 window.addEventListener('scroll', onScroll, {passive:true});
 window.addEventListener('resize', onScroll);
 onScroll();
-
-function pauseOtherLashVideos(activeVideo){
-  lashVideos.forEach(otherVideo => {
-    if (otherVideo !== activeVideo) otherVideo.pause();
-  });
-}
-
-const mediaObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    const media = entry.target;
-    if (media.classList.contains('reveal-media') || media.classList.contains('statement-copy')) {
-      if (entry.isIntersecting) media.classList.add('is-visible');
-      return;
-    }
-
-    if (entry.intersectionRatio >= .45) {
-      pauseOtherLashVideos(media);
-      media.play().catch(() => {});
-    } else if (!entry.isIntersecting || entry.intersectionRatio < .2) {
-      media.pause();
-    }
-  });
-}, {threshold:[0,.2,.45,.7,1]});
-
-revealMedia.forEach(media => mediaObserver.observe(media));
-if (statementCopy) mediaObserver.observe(statementCopy);
-lashVideos.forEach(media => mediaObserver.observe(media));
 
 function closeMobileNav(){
   mobileNav.classList.remove('is-open');
@@ -897,6 +787,101 @@ menuToggle.addEventListener('click', () => {
 });
 
 mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileNav));
+
+function initStoryTypography(){
+  if (!window.gsap || !window.ScrollTrigger || reduceMotion.matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+  const storySteps = [...document.querySelectorAll('.story-step')];
+  if (storySteps.length !== 2) return;
+  const [firstStep, secondStep] = storySteps;
+  const firstLines = firstStep.querySelectorAll('.story-line > span');
+  const secondLines = secondStep.querySelectorAll('.story-line > span');
+  storyTypographyReady = true;
+  document.documentElement.classList.add('story-gsap');
+  gsap.set(storySteps, {autoAlpha:0, y:0, scale:.97});
+  gsap.set([...firstLines, ...secondLines], {yPercent:110, opacity:.35});
+  gsap.timeline({scrollTrigger:{trigger:story,start:'top top',end:'bottom bottom',scrub:.8,invalidateOnRefresh:true}})
+    .to(firstStep,{autoAlpha:1,scale:1,duration:.08,ease:'sine.inOut'},.06)
+    .to(firstLines,{yPercent:0,opacity:1,stagger:.08,duration:.14,ease:'power3.out'},.06)
+    .to(firstLines,{yPercent:-105,opacity:.28,stagger:.05,duration:.16,ease:'sine.inOut'},.37)
+    .to(firstStep,{autoAlpha:0,scale:.985,y:-18,duration:.16,ease:'sine.inOut'},.42)
+    .to(secondStep,{autoAlpha:1,scale:1,duration:.08,ease:'sine.inOut'},.30)
+    .to(secondLines,{yPercent:0,opacity:1,stagger:.08,duration:.14,ease:'power3.out'},.30)
+    .to(secondLines,{yPercent:-92,opacity:.32,stagger:.05,duration:.16,ease:'sine.inOut'},.72)
+    .to(secondStep,{autoAlpha:0,scale:.985,y:-16,duration:.16,ease:'sine.inOut'},.78);
+}
+
+/* The opening film keeps its frame-accurate native scrub. The editorial world
+   uses small, independent GSAP chapters so it can be extended safely. */
+function initExperienceWorld(){
+  if (!window.gsap || !window.ScrollTrigger || reduceMotion.matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+  const world = document.querySelector('.experience-world');
+  if (!world) return;
+  const background = world.querySelector('.world-background');
+  const shapes = [...world.querySelectorAll('.world-shape')];
+  const frame = world.querySelector('.world-media-frame');
+  const scrubVideo = world.querySelector('.world-video-scrub');
+  const videoOne = world.querySelector('.world-video-one');
+  const videoTwo = world.querySelector('.world-video-two');
+  const worldVideos = [scrubVideo, videoOne, videoTwo];
+  const chapters = [...world.querySelectorAll('.world-chapter')];
+  const playOnly = active => worldVideos.forEach(videoEl => {
+    if (!videoEl) return;
+    if (videoEl === active) videoEl.play().catch(() => {}); else videoEl.pause();
+  });
+  const setFilm = active => ScrollTrigger.create({
+    trigger: active.trigger, start:'top 72%', end:'bottom 28%',
+    onEnter:() => playOnly(active.video), onEnterBack:() => playOnly(active.video),
+    onLeave:() => active.video.pause(), onLeaveBack:() => active.video.pause()
+  });
+  worldVideos.forEach(videoEl => { if (videoEl) { videoEl.muted = true; videoEl.playsInline = true; } });
+
+  gsap.set(shapes, {force3D:true});
+  const colors = ['#f1e7dc','#d8b7a3','#c8b7a7','#e1ddd0','#c9b39e','#2a2926','#e6d6c9'];
+  chapters.forEach((chapter, index) => {
+    const targetColor = colors[Math.min(index, colors.length - 1)];
+    gsap.to(background, {backgroundColor:targetColor, ease:'none', scrollTrigger:{trigger:chapter,start:'top 72%',end:'top 18%',scrub:1,invalidateOnRefresh:true}});
+    const titleLines = chapter.querySelectorAll('.line > span');
+    if (titleLines.length) gsap.from(titleLines, {yPercent:112, opacity:.2, stagger:.08, ease:'power3.out', scrollTrigger:{trigger:chapter,start:'top 72%',end:'top 36%',scrub:.8,invalidateOnRefresh:true}});
+  });
+  gsap.to(shapes[0], {xPercent:-46,yPercent:35,rotation:18,borderRadius:'50%',backgroundColor:'#c5c7a5',ease:'none',scrollTrigger:{trigger:world,start:'top top',end:'55% bottom',scrub:1.1,invalidateOnRefresh:true}});
+  gsap.to(shapes[1], {xPercent:78,yPercent:-52,rotation:-11,borderRadius:'50% 50% 0 0 / 42% 42% 0 0',backgroundColor:'#8e9470',ease:'none',scrollTrigger:{trigger:world,start:'18% top',end:'72% bottom',scrub:1.2,invalidateOnRefresh:true}});
+  gsap.to(shapes[2], {scale:3.4,xPercent:-68,yPercent:-60,backgroundColor:'#4b513d',ease:'none',scrollTrigger:{trigger:world.querySelector('.method-chapter'),start:'top 75%',end:'bottom 30%',scrub:1,invalidateOnRefresh:true}});
+  gsap.timeline({scrollTrigger:{trigger:world.querySelector('.world-chapter-lashes'),start:'top 78%',end:'bottom 28%',scrub:1,invalidateOnRefresh:true}})
+    .to(frame,{scale:1.12,borderRadius:'42% 8% 38% 8% / 10% 32% 12% 36%',ease:'none'},0)
+    .to(scrubVideo,{opacity:0,scale:1},.18).to(videoOne,{opacity:1,scale:1},.18);
+  gsap.timeline({scrollTrigger:{trigger:world.querySelectorAll('.world-chapter-lashes')[1],start:'top 76%',end:'bottom 30%',scrub:1,invalidateOnRefresh:true}})
+    .to(videoOne,{opacity:0,scale:1.04,ease:'none'},.25).to(videoTwo,{opacity:1,scale:1,ease:'none'},.25)
+    .to(frame,{borderRadius:'12% 44% 10% 40% / 38% 12% 42% 14%',yPercent:-50,ease:'none'},0);
+  gsap.to(frame,{scale:.82,xPercent:8,borderRadius:'50%',ease:'none',scrollTrigger:{trigger:world.querySelector('.world-chapter-facial'),start:'top 80%',end:'bottom 25%',scrub:1,invalidateOnRefresh:true}});
+  gsap.to(frame,{scale:.94,xPercent:-4,borderRadius:'46% 8% 42% 8% / 12% 34% 12% 36%',ease:'none',scrollTrigger:{trigger:world.querySelector('.world-chapter-wellness'),start:'top 80%',end:'bottom 24%',scrub:1,invalidateOnRefresh:true}});
+  const facialItems = world.querySelectorAll('.world-chapter-facial .editorial-list div');
+  gsap.from(facialItems,{y:22,opacity:0,stagger:.06,ease:'power2.out',scrollTrigger:{trigger:world.querySelector('.world-chapter-facial'),start:'top 58%',end:'center 50%',scrub:.8,invalidateOnRefresh:true}});
+  const method = world.querySelector('.method-chapter');
+  const methodItems = method.querySelectorAll('.method-item');
+  const progress = method.querySelector('.method-progress');
+  methodItems.forEach((item,index) => {
+    gsap.timeline({scrollTrigger:{trigger:method,start:()=>`${index * 23 + 12}% top`,end:()=>`${index * 23 + 34}% top`,scrub:.75,invalidateOnRefresh:true}})
+      .to(methodItems,{opacity:0,y:-24,duration:.45,ease:'sine.inOut'},0)
+      .to(item,{opacity:1,y:0,duration:.45,ease:'power3.out'},0)
+      .to(progress,{'--method-progress':(index + 1) / methodItems.length,duration:.45,ease:'none'},0);
+  });
+  setFilm({trigger:world.querySelector('.world-chapter-intro'),video:scrubVideo});
+  setFilm({trigger:world.querySelectorAll('.world-chapter-lashes')[0],video:videoOne});
+  setFilm({trigger:world.querySelectorAll('.world-chapter-lashes')[1],video:videoTwo});
+  ScrollTrigger.create({trigger:method,start:'top 55%',end:'bottom 40%',onEnter:()=>header.dataset.scene='dark',onEnterBack:()=>header.dataset.scene='dark',onLeave:()=>header.dataset.scene='light',onLeaveBack:()=>header.dataset.scene='light'});
+  ScrollTrigger.matchMedia({
+    '(max-width: 800px)': () => {
+      gsap.set(frame,{clearProps:'width,height,xPercent,yPercent'});
+      gsap.to(frame,{scale:.94,ease:'none',scrollTrigger:{trigger:world,start:'top 40%',end:'70% bottom',scrub:.8,invalidateOnRefresh:true}});
+    }
+  });
+  window.addEventListener('load', () => ScrollTrigger.refresh(), {once:true});
+}
+
+window.addEventListener('load', initStoryTypography, {once:true});
+window.addEventListener('load', initExperienceWorld, {once:true});
 </script>
 </body>
 </html>
